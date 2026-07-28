@@ -1,0 +1,11 @@
+{
+  "name": "gts-docx-export",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Fills the GTS docxtemplater template with a survey's data (invoked from Laravel via `node render.js <template> <data.json> <output.docx>`).",
+  "main": "render.js",
+  "dependencies": {
+    "docxtemplater": "^3.47.2",
+    "pizzip": "^3.1.6"
+  }
+}

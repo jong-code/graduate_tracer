@@ -1,0 +1,336 @@
+:root {
+    --tracer-orange: #f0a058;
+    --tracer-orange-dark: #e8934a;
+    --tracer-bg: #fafafa;
+    --tracer-border: #e5e5e5;
+    --tracer-text-muted: #7a7a7a;
+}
+
+body {
+    background-color: var(--tracer-bg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #1f1f1f;
+}
+
+.tracer-wrapper {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 28px 16px 60px;
+}
+
+.tracer-header h1 {
+    font-size: 1.7rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.tracer-header p {
+    color: var(--tracer-text-muted);
+    margin-bottom: 24px;
+}
+
+.tracer-header-logo {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+@media (max-width: 575.98px) {
+    .tracer-header-logo {
+        width: 44px;
+        height: 44px;
+    }
+}
+
+/* Stepper */
+.tracer-stepper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.tracer-step-circle {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    background: #ececec;
+    color: #8a8a8a;
+    transition: background .2s ease, color .2s ease;
+}
+
+.tracer-step-circle.active {
+    background: var(--tracer-orange);
+    color: #fff;
+}
+
+.tracer-step-circle.done {
+    background: var(--tracer-orange);
+    color: #fff;
+}
+
+.tracer-step-circle.clickable {
+    cursor: pointer;
+}
+
+.tracer-step-circle.clickable:hover,
+.tracer-step-circle.clickable:focus-visible {
+    background: var(--tracer-orange-dark);
+    color: #fff;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(240, 160, 88, 0.35);
+}
+
+.tracer-step-circle.locked {
+    cursor: not-allowed;
+}
+
+.tracer-step-line {
+    flex: 1;
+    height: 3px;
+    background: #e0e0e0;
+    margin: 0 8px;
+    border-radius: 2px;
+}
+
+.tracer-step-line.done {
+    background: var(--tracer-orange);
+}
+
+/* Card */
+.tracer-card {
+    background: #fff;
+    border: 1px solid var(--tracer-border);
+    border-radius: 16px;
+    padding: 28px 24px;
+}
+
+.tracer-card h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.tracer-card > p.tracer-card-sub {
+    color: var(--tracer-text-muted);
+    margin-bottom: 22px;
+}
+
+.tracer-section { display: none; }
+.tracer-section.active { display: block; }
+
+.form-label {
+    font-weight: 600;
+    font-size: .92rem;
+}
+
+.form-label .req {
+    color: #e0554a;
+}
+
+.form-control, .form-select {
+    border-color: var(--tracer-border);
+    padding: 10px 14px;
+    border-radius: 10px;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--tracer-orange);
+    box-shadow: 0 0 0 .2rem rgba(240, 160, 88, .18);
+}
+
+.tracer-check-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px 16px;
+}
+
+@media (max-width: 576px) {
+    .tracer-check-grid { grid-template-columns: 1fr; }
+    .tracer-card { padding: 20px 16px; border-radius: 12px; }
+    .tracer-wrapper { padding: 18px 10px 48px; }
+}
+
+.tracer-repeat-row {
+    border: 1px solid var(--tracer-border);
+    border-radius: 12px;
+    padding: 14px;
+    margin-bottom: 12px;
+    position: relative;
+}
+
+.tracer-remove-row {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    border: none;
+    background: transparent;
+    color: #c0453a;
+    font-weight: 600;
+    font-size: .85rem;
+}
+
+.tracer-add-row {
+    border: 1px dashed var(--tracer-orange);
+    color: var(--tracer-orange-dark);
+    background: #fff7ef;
+    border-radius: 10px;
+    padding: 8px 14px;
+    font-weight: 600;
+    font-size: .9rem;
+}
+
+.tracer-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+}
+
+.btn-tracer-prev {
+    border: 1px solid var(--tracer-border);
+    background: #fff;
+    color: #444;
+    border-radius: 999px;
+    padding: 10px 22px;
+    font-weight: 600;
+}
+
+.btn-tracer-next, .btn-tracer-submit {
+    background: var(--tracer-orange);
+    border: none;
+    color: #fff;
+    border-radius: 999px;
+    padding: 10px 24px;
+    font-weight: 600;
+}
+
+.btn-tracer-next:hover, .btn-tracer-submit:hover {
+    background: var(--tracer-orange-dark);
+    color: #fff;
+}
+
+.tracer-conditional { display: none; }
+.tracer-conditional.show { display: block; }
+
+/* Bigger, higher-contrast checkboxes and radios */
+.form-check-input {
+    width: 1.25em;
+    height: 1.25em;
+    margin-top: 0.15em;
+    border: 2px solid #b0aca3;
+    box-shadow: none;
+}
+
+.form-check-input:checked {
+    background-color: var(--tracer-orange);
+    border-color: var(--tracer-orange-dark);
+}
+
+.form-check-input:focus {
+    border-color: var(--tracer-orange);
+    box-shadow: 0 0 0 .2rem rgba(240, 160, 88, .25);
+}
+
+.form-check-input:hover {
+    border-color: var(--tracer-orange-dark);
+    cursor: pointer;
+}
+
+.form-check-label {
+    padding-left: 2px;
+    cursor: pointer;
+}
+
+.form-check {
+    margin-bottom: 6px;
+}
+
+/* Nav bar links styled as visible outlined buttons */
+.nav-pill-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 16px;
+    border: 1.5px solid var(--tracer-orange);
+    border-radius: 999px;
+    color: var(--tracer-orange-dark);
+    font-weight: 600;
+    font-size: .9rem;
+    text-decoration: none;
+    transition: background-color .15s ease, color .15s ease;
+    white-space: nowrap;
+}
+
+.nav-pill-link:hover {
+    background-color: var(--tracer-orange);
+    color: #fff;
+}
+
+.nav-pill-link.active {
+    background-color: var(--tracer-orange);
+    color: #fff;
+}
+
+.nav-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-icon-svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.nav-logout-btn {
+    border-color: #adb5bd;
+    color: #495057;
+}
+
+.nav-logout-btn:hover {
+    background-color: #adb5bd;
+    color: #fff;
+}
+
+/* Mobile: shrink the nav to icon-only buttons so it stays usable on
+   small screens - text labels and the "name (role)" line are hidden,
+   the pill becomes a compact circular icon button. */
+@media (max-width: 767.98px) {
+    .nav-label {
+        display: none;
+    }
+
+    .nav-user-label {
+        display: none;
+    }
+
+    .nav-pill-link:has(.nav-icon) {
+        padding: 8px;
+        width: 38px;
+        height: 38px;
+        gap: 0;
+        justify-content: center;
+    }
+
+    .navbar .d-flex.align-items-center {
+        gap: 8px !important;
+    }
+}
+
+/* Analytics: CSV preview table - monospace to read like the actual file */
+.tracer-csv-preview {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: .85rem;
+}
+
+.tracer-csv-preview thead th {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-weight: 600;
+    border-bottom: 2px solid var(--tracer-orange);
+}
