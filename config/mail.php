@@ -15,7 +15,7 @@ return [
     */
 
     'default' => env('MAIL_MAILER', 'log'),
-
+    'brevo_daily_limit' => env('BREVO_DAILY_LIMIT', 300),
     /*
     |--------------------------------------------------------------------------
     | Mailer Configurations
@@ -47,6 +47,16 @@ return [
             'password' => env('MAIL_PASSWORD'),
             'timeout' => null,
             'local_domain' => env('MAIL_EHLO_DOMAIN', parse_url((string) env('APP_URL', 'http://localhost'), PHP_URL_HOST)),
+        ],
+
+        'brevo' => [
+    'transport' => 'smtp',
+    'host' => env('BREVO_MAIL_HOST', 'smtp-relay.brevo.com'),
+    'port' => env('BREVO_MAIL_PORT', 587),
+    'encryption' => env('BREVO_MAIL_ENCRYPTION', 'tls'),
+    'username' => env('BREVO_MAIL_USERNAME'),
+    'password' => env('BREVO_MAIL_PASSWORD'),
+    'timeout' => null,
         ],
 
         'ses' => [

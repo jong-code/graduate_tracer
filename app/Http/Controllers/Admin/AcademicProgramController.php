@@ -4,21 +4,25 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\AcademicProgram;
+use App\Models\Department;
 use Illuminate\Http\Request;
 
 class AcademicProgramController extends Controller
 {
     public function index()
     {
-        return view('admin.programs.index', ['programs' => AcademicProgram::orderBy('name')->get()]);
+        return view('admin.programs.index', [
+            'programs' => AcademicProgram::with('department')->orderBy('name')->get(),
+            'departments' => Department::orderBy('name')->get(),
+        ]);
     }
 
     public function store(Request $request)
     {
         $validated = $request->validate([
+            'department_id' => ['nullable', 'exists:department,id'],
             'name' => ['required', 'string', 'max:255'],
             'code' => ['required', 'string', 'max:50', 'unique:academic_programs,code'],
-            'college' => ['nullable', 'string', 'max:255'],
         ]);
 
         AcademicProgram::create($validated);
@@ -29,9 +33,9 @@ class AcademicProgramController extends Controller
     public function update(Request $request, AcademicProgram $academicProgram)
     {
         $validated = $request->validate([
+            'department_id' => ['nullable', 'exists:department,id'],
             'name' => ['required', 'string', 'max:255'],
             'code' => ['required', 'string', 'max:50', 'unique:academic_programs,code,' . $academicProgram->id],
-            'college' => ['nullable', 'string', 'max:255'],
             'is_active' => ['required', 'boolean'],
         ]);
 

@@ -1,0 +1,16 @@
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Defense in depth for shared hosting accidentally pointed at the
+    # Laravel project root. The preferred fix is still to make public/ the
+    # domain's document root.
+    RewriteRule ^(?:app|bootstrap|config|database|docx-export|resources|routes|storage|tests|vendor)(?:/|$) - [F,L,NC]
+    RewriteRule ^(?:artisan|composer\.(?:json|lock)|package(?:-lock)?\.json|phpunit\.xml|vite\.config\.js|README\.md|SECURITY\.md)$ - [F,L,NC]
+    RewriteRule ^(?:\.env|\.git|\.github|\.idea|\.vscode)(?:/|$) - [F,L,NC]
+</IfModule>
+
+<FilesMatch "(?:^\.|\.(?:bak|conf|dist|env|ini|log|old|sql|sqlite|ya?ml|zip)$)">
+    Require all denied
+</FilesMatch>

@@ -33,7 +33,10 @@ return [
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app/private'),
-            'serve' => true,
+            // The application does not issue temporary local file URLs or
+            // uploads. Keep Laravel's signed /storage GET/PUT routes disabled
+            // to reduce the public attack surface.
+            'serve' => env('FILESYSTEM_LOCAL_SERVE', false),
             'throw' => false,
             'report' => false,
         ],

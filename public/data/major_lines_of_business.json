@@ -1,0 +1,4192 @@
+{
+  "dataset_name": "Major Lines of Business of Companies",
+  "survey_field": "Major line of business of the company",
+  "description": "A comprehensive, categorized list of primary company business activities for graduate tracer surveys, employment forms, company profiles, and searchable industry selectors.",
+  "intended_use": "Graduate tracer survey",
+  "locale_note": "Includes internationally recognized activities and business lines commonly found in the Philippines.",
+  "selection_guidance": "Select the company's main revenue-generating or principal operating activity, not the employee's occupation or department.",
+  "version": "1.0.0",
+  "category_count": 23,
+  "business_line_count": 1010,
+  "categories": [
+    {
+      "id": "agriculture_forestry_fishing",
+      "name": "Agriculture, Forestry, and Fishing",
+      "business_lines": [
+        {
+          "id": "AFF-001",
+          "name": "Rice farming"
+        },
+        {
+          "id": "AFF-002",
+          "name": "Corn farming"
+        },
+        {
+          "id": "AFF-003",
+          "name": "Coconut farming"
+        },
+        {
+          "id": "AFF-004",
+          "name": "Sugarcane farming"
+        },
+        {
+          "id": "AFF-005",
+          "name": "Banana farming"
+        },
+        {
+          "id": "AFF-006",
+          "name": "Pineapple farming"
+        },
+        {
+          "id": "AFF-007",
+          "name": "Mango farming"
+        },
+        {
+          "id": "AFF-008",
+          "name": "Coffee farming"
+        },
+        {
+          "id": "AFF-009",
+          "name": "Cacao farming"
+        },
+        {
+          "id": "AFF-010",
+          "name": "Rubber farming"
+        },
+        {
+          "id": "AFF-011",
+          "name": "Vegetable farming"
+        },
+        {
+          "id": "AFF-012",
+          "name": "Root crop farming"
+        },
+        {
+          "id": "AFF-013",
+          "name": "Fruit farming"
+        },
+        {
+          "id": "AFF-014",
+          "name": "Organic farming"
+        },
+        {
+          "id": "AFF-015",
+          "name": "Hydroponic farming"
+        },
+        {
+          "id": "AFF-016",
+          "name": "Greenhouse crop production"
+        },
+        {
+          "id": "AFF-017",
+          "name": "Plant nursery operation"
+        },
+        {
+          "id": "AFF-018",
+          "name": "Seed production"
+        },
+        {
+          "id": "AFF-019",
+          "name": "Floriculture"
+        },
+        {
+          "id": "AFF-020",
+          "name": "Horticulture"
+        },
+        {
+          "id": "AFF-021",
+          "name": "Agricultural support services"
+        },
+        {
+          "id": "AFF-022",
+          "name": "Farm management services"
+        },
+        {
+          "id": "AFF-023",
+          "name": "Agricultural equipment rental"
+        },
+        {
+          "id": "AFF-024",
+          "name": "Agricultural irrigation services"
+        },
+        {
+          "id": "AFF-025",
+          "name": "Poultry farming"
+        },
+        {
+          "id": "AFF-026",
+          "name": "Chicken egg production"
+        },
+        {
+          "id": "AFF-027",
+          "name": "Duck farming"
+        },
+        {
+          "id": "AFF-028",
+          "name": "Swine farming"
+        },
+        {
+          "id": "AFF-029",
+          "name": "Cattle farming"
+        },
+        {
+          "id": "AFF-030",
+          "name": "Dairy farming"
+        },
+        {
+          "id": "AFF-031",
+          "name": "Goat farming"
+        },
+        {
+          "id": "AFF-032",
+          "name": "Sheep farming"
+        },
+        {
+          "id": "AFF-033",
+          "name": "Livestock breeding"
+        },
+        {
+          "id": "AFF-034",
+          "name": "Animal feed production"
+        },
+        {
+          "id": "AFF-035",
+          "name": "Beekeeping"
+        },
+        {
+          "id": "AFF-036",
+          "name": "Sericulture"
+        },
+        {
+          "id": "AFF-037",
+          "name": "Commercial fishing"
+        },
+        {
+          "id": "AFF-038",
+          "name": "Municipal fishing"
+        },
+        {
+          "id": "AFF-039",
+          "name": "Deep-sea fishing"
+        },
+        {
+          "id": "AFF-040",
+          "name": "Aquaculture"
+        },
+        {
+          "id": "AFF-041",
+          "name": "Fish farming"
+        },
+        {
+          "id": "AFF-042",
+          "name": "Shrimp farming"
+        },
+        {
+          "id": "AFF-043",
+          "name": "Crab farming"
+        },
+        {
+          "id": "AFF-044",
+          "name": "Seaweed farming"
+        },
+        {
+          "id": "AFF-045",
+          "name": "Pearl farming"
+        },
+        {
+          "id": "AFF-046",
+          "name": "Fish hatchery operation"
+        },
+        {
+          "id": "AFF-047",
+          "name": "Fisheries support services"
+        },
+        {
+          "id": "AFF-048",
+          "name": "Forestry"
+        },
+        {
+          "id": "AFF-049",
+          "name": "Timber plantation"
+        },
+        {
+          "id": "AFF-050",
+          "name": "Forest nursery operation"
+        },
+        {
+          "id": "AFF-051",
+          "name": "Logging"
+        },
+        {
+          "id": "AFF-052",
+          "name": "Bamboo production"
+        },
+        {
+          "id": "AFF-053",
+          "name": "Rattan production"
+        },
+        {
+          "id": "AFF-054",
+          "name": "Non-timber forest product gathering"
+        },
+        {
+          "id": "AFF-055",
+          "name": "Wildlife conservation services"
+        }
+      ]
+    },
+    {
+      "id": "mining_quarrying",
+      "name": "Mining and Quarrying",
+      "business_lines": [
+        {
+          "id": "MIN-001",
+          "name": "Coal mining"
+        },
+        {
+          "id": "MIN-002",
+          "name": "Crude oil extraction"
+        },
+        {
+          "id": "MIN-003",
+          "name": "Natural gas extraction"
+        },
+        {
+          "id": "MIN-004",
+          "name": "Metal ore mining"
+        },
+        {
+          "id": "MIN-005",
+          "name": "Gold mining"
+        },
+        {
+          "id": "MIN-006",
+          "name": "Silver mining"
+        },
+        {
+          "id": "MIN-007",
+          "name": "Copper mining"
+        },
+        {
+          "id": "MIN-008",
+          "name": "Nickel mining"
+        },
+        {
+          "id": "MIN-009",
+          "name": "Chromite mining"
+        },
+        {
+          "id": "MIN-010",
+          "name": "Iron ore mining"
+        },
+        {
+          "id": "MIN-011",
+          "name": "Manganese mining"
+        },
+        {
+          "id": "MIN-012",
+          "name": "Non-metallic mineral mining"
+        },
+        {
+          "id": "MIN-013",
+          "name": "Limestone quarrying"
+        },
+        {
+          "id": "MIN-014",
+          "name": "Marble quarrying"
+        },
+        {
+          "id": "MIN-015",
+          "name": "Granite quarrying"
+        },
+        {
+          "id": "MIN-016",
+          "name": "Sand and gravel quarrying"
+        },
+        {
+          "id": "MIN-017",
+          "name": "Clay extraction"
+        },
+        {
+          "id": "MIN-018",
+          "name": "Salt production"
+        },
+        {
+          "id": "MIN-019",
+          "name": "Silica mining"
+        },
+        {
+          "id": "MIN-020",
+          "name": "Phosphate mining"
+        },
+        {
+          "id": "MIN-021",
+          "name": "Stone quarrying"
+        },
+        {
+          "id": "MIN-022",
+          "name": "Mining support services"
+        },
+        {
+          "id": "MIN-023",
+          "name": "Oil and gas support services"
+        },
+        {
+          "id": "MIN-024",
+          "name": "Mineral exploration"
+        },
+        {
+          "id": "MIN-025",
+          "name": "Drilling services"
+        },
+        {
+          "id": "MIN-026",
+          "name": "Mine site rehabilitation"
+        },
+        {
+          "id": "MIN-027",
+          "name": "Mineral processing"
+        }
+      ]
+    },
+    {
+      "id": "manufacturing_food",
+      "name": "Food, Beverage, and Tobacco Manufacturing",
+      "business_lines": [
+        {
+          "id": "MFD-001",
+          "name": "Meat processing"
+        },
+        {
+          "id": "MFD-002",
+          "name": "Poultry processing"
+        },
+        {
+          "id": "MFD-003",
+          "name": "Fish processing"
+        },
+        {
+          "id": "MFD-004",
+          "name": "Seafood processing"
+        },
+        {
+          "id": "MFD-005",
+          "name": "Fruit processing"
+        },
+        {
+          "id": "MFD-006",
+          "name": "Vegetable processing"
+        },
+        {
+          "id": "MFD-007",
+          "name": "Coconut product manufacturing"
+        },
+        {
+          "id": "MFD-008",
+          "name": "Edible oil manufacturing"
+        },
+        {
+          "id": "MFD-009",
+          "name": "Dairy product manufacturing"
+        },
+        {
+          "id": "MFD-010",
+          "name": "Ice cream manufacturing"
+        },
+        {
+          "id": "MFD-011",
+          "name": "Rice milling"
+        },
+        {
+          "id": "MFD-012",
+          "name": "Corn milling"
+        },
+        {
+          "id": "MFD-013",
+          "name": "Flour milling"
+        },
+        {
+          "id": "MFD-014",
+          "name": "Starch manufacturing"
+        },
+        {
+          "id": "MFD-015",
+          "name": "Animal feed manufacturing"
+        },
+        {
+          "id": "MFD-016",
+          "name": "Bakery product manufacturing"
+        },
+        {
+          "id": "MFD-017",
+          "name": "Bread manufacturing"
+        },
+        {
+          "id": "MFD-018",
+          "name": "Pastry manufacturing"
+        },
+        {
+          "id": "MFD-019",
+          "name": "Noodle manufacturing"
+        },
+        {
+          "id": "MFD-020",
+          "name": "Pasta manufacturing"
+        },
+        {
+          "id": "MFD-021",
+          "name": "Sugar milling"
+        },
+        {
+          "id": "MFD-022",
+          "name": "Sugar refining"
+        },
+        {
+          "id": "MFD-023",
+          "name": "Chocolate manufacturing"
+        },
+        {
+          "id": "MFD-024",
+          "name": "Confectionery manufacturing"
+        },
+        {
+          "id": "MFD-025",
+          "name": "Coffee processing"
+        },
+        {
+          "id": "MFD-026",
+          "name": "Tea processing"
+        },
+        {
+          "id": "MFD-027",
+          "name": "Condiment manufacturing"
+        },
+        {
+          "id": "MFD-028",
+          "name": "Sauce manufacturing"
+        },
+        {
+          "id": "MFD-029",
+          "name": "Snack food manufacturing"
+        },
+        {
+          "id": "MFD-030",
+          "name": "Canned food manufacturing"
+        },
+        {
+          "id": "MFD-031",
+          "name": "Frozen food manufacturing"
+        },
+        {
+          "id": "MFD-032",
+          "name": "Ready-to-eat meal manufacturing"
+        },
+        {
+          "id": "MFD-033",
+          "name": "Health food manufacturing"
+        },
+        {
+          "id": "MFD-034",
+          "name": "Food supplement manufacturing"
+        },
+        {
+          "id": "MFD-035",
+          "name": "Distilled beverage manufacturing"
+        },
+        {
+          "id": "MFD-036",
+          "name": "Wine manufacturing"
+        },
+        {
+          "id": "MFD-037",
+          "name": "Beer manufacturing"
+        },
+        {
+          "id": "MFD-038",
+          "name": "Soft drink manufacturing"
+        },
+        {
+          "id": "MFD-039",
+          "name": "Bottled water manufacturing"
+        },
+        {
+          "id": "MFD-040",
+          "name": "Fruit juice manufacturing"
+        },
+        {
+          "id": "MFD-041",
+          "name": "Ice manufacturing"
+        },
+        {
+          "id": "MFD-042",
+          "name": "Tobacco product manufacturing"
+        }
+      ]
+    },
+    {
+      "id": "manufacturing_textile_wood_paper",
+      "name": "Textile, Apparel, Wood, Paper, and Printing Manufacturing",
+      "business_lines": [
+        {
+          "id": "MTW-001",
+          "name": "Textile manufacturing"
+        },
+        {
+          "id": "MTW-002",
+          "name": "Yarn manufacturing"
+        },
+        {
+          "id": "MTW-003",
+          "name": "Fabric weaving"
+        },
+        {
+          "id": "MTW-004",
+          "name": "Fabric knitting"
+        },
+        {
+          "id": "MTW-005",
+          "name": "Textile dyeing and finishing"
+        },
+        {
+          "id": "MTW-006",
+          "name": "Garment manufacturing"
+        },
+        {
+          "id": "MTW-007",
+          "name": "Uniform manufacturing"
+        },
+        {
+          "id": "MTW-008",
+          "name": "Sportswear manufacturing"
+        },
+        {
+          "id": "MTW-009",
+          "name": "Footwear manufacturing"
+        },
+        {
+          "id": "MTW-010",
+          "name": "Leather product manufacturing"
+        },
+        {
+          "id": "MTW-011",
+          "name": "Bag and luggage manufacturing"
+        },
+        {
+          "id": "MTW-012",
+          "name": "Carpet and rug manufacturing"
+        },
+        {
+          "id": "MTW-013",
+          "name": "Furniture manufacturing"
+        },
+        {
+          "id": "MTW-014",
+          "name": "Wood furniture manufacturing"
+        },
+        {
+          "id": "MTW-015",
+          "name": "Metal furniture manufacturing"
+        },
+        {
+          "id": "MTW-016",
+          "name": "Bamboo furniture manufacturing"
+        },
+        {
+          "id": "MTW-017",
+          "name": "Rattan furniture manufacturing"
+        },
+        {
+          "id": "MTW-018",
+          "name": "Wood processing"
+        },
+        {
+          "id": "MTW-019",
+          "name": "Sawmilling"
+        },
+        {
+          "id": "MTW-020",
+          "name": "Plywood manufacturing"
+        },
+        {
+          "id": "MTW-021",
+          "name": "Veneer manufacturing"
+        },
+        {
+          "id": "MTW-022",
+          "name": "Wooden container manufacturing"
+        },
+        {
+          "id": "MTW-023",
+          "name": "Cork product manufacturing"
+        },
+        {
+          "id": "MTW-024",
+          "name": "Pulp manufacturing"
+        },
+        {
+          "id": "MTW-025",
+          "name": "Paper manufacturing"
+        },
+        {
+          "id": "MTW-026",
+          "name": "Paperboard manufacturing"
+        },
+        {
+          "id": "MTW-027",
+          "name": "Paper packaging manufacturing"
+        },
+        {
+          "id": "MTW-028",
+          "name": "Carton manufacturing"
+        },
+        {
+          "id": "MTW-029",
+          "name": "Printing services"
+        },
+        {
+          "id": "MTW-030",
+          "name": "Commercial printing"
+        },
+        {
+          "id": "MTW-031",
+          "name": "Digital printing"
+        },
+        {
+          "id": "MTW-032",
+          "name": "Book printing"
+        },
+        {
+          "id": "MTW-033",
+          "name": "Newspaper printing"
+        },
+        {
+          "id": "MTW-034",
+          "name": "Label printing"
+        },
+        {
+          "id": "MTW-035",
+          "name": "Prepress services"
+        },
+        {
+          "id": "MTW-036",
+          "name": "Bookbinding"
+        },
+        {
+          "id": "MTW-037",
+          "name": "Recorded media reproduction"
+        }
+      ]
+    },
+    {
+      "id": "manufacturing_chemical_metal_equipment",
+      "name": "Chemical, Metal, Electronics, and Equipment Manufacturing",
+      "business_lines": [
+        {
+          "id": "MCE-001",
+          "name": "Petroleum refining"
+        },
+        {
+          "id": "MCE-002",
+          "name": "Industrial chemical manufacturing"
+        },
+        {
+          "id": "MCE-003",
+          "name": "Fertilizer manufacturing"
+        },
+        {
+          "id": "MCE-004",
+          "name": "Pesticide manufacturing"
+        },
+        {
+          "id": "MCE-005",
+          "name": "Paint manufacturing"
+        },
+        {
+          "id": "MCE-006",
+          "name": "Ink manufacturing"
+        },
+        {
+          "id": "MCE-007",
+          "name": "Soap manufacturing"
+        },
+        {
+          "id": "MCE-008",
+          "name": "Detergent manufacturing"
+        },
+        {
+          "id": "MCE-009",
+          "name": "Cosmetics manufacturing"
+        },
+        {
+          "id": "MCE-010",
+          "name": "Personal care product manufacturing"
+        },
+        {
+          "id": "MCE-011",
+          "name": "Pharmaceutical manufacturing"
+        },
+        {
+          "id": "MCE-012",
+          "name": "Medicinal product manufacturing"
+        },
+        {
+          "id": "MCE-013",
+          "name": "Rubber product manufacturing"
+        },
+        {
+          "id": "MCE-014",
+          "name": "Tire manufacturing"
+        },
+        {
+          "id": "MCE-015",
+          "name": "Plastic product manufacturing"
+        },
+        {
+          "id": "MCE-016",
+          "name": "Plastic packaging manufacturing"
+        },
+        {
+          "id": "MCE-017",
+          "name": "Glass manufacturing"
+        },
+        {
+          "id": "MCE-018",
+          "name": "Ceramic product manufacturing"
+        },
+        {
+          "id": "MCE-019",
+          "name": "Cement manufacturing"
+        },
+        {
+          "id": "MCE-020",
+          "name": "Concrete product manufacturing"
+        },
+        {
+          "id": "MCE-021",
+          "name": "Steel manufacturing"
+        },
+        {
+          "id": "MCE-022",
+          "name": "Iron foundry operation"
+        },
+        {
+          "id": "MCE-023",
+          "name": "Metal casting"
+        },
+        {
+          "id": "MCE-024",
+          "name": "Metal fabrication"
+        },
+        {
+          "id": "MCE-025",
+          "name": "Structural metal manufacturing"
+        },
+        {
+          "id": "MCE-026",
+          "name": "Cutlery and hand tool manufacturing"
+        },
+        {
+          "id": "MCE-027",
+          "name": "Wire and cable manufacturing"
+        },
+        {
+          "id": "MCE-028",
+          "name": "Battery manufacturing"
+        },
+        {
+          "id": "MCE-029",
+          "name": "Electrical equipment manufacturing"
+        },
+        {
+          "id": "MCE-030",
+          "name": "Home appliance manufacturing"
+        },
+        {
+          "id": "MCE-031",
+          "name": "Lighting equipment manufacturing"
+        },
+        {
+          "id": "MCE-032",
+          "name": "Electronics manufacturing"
+        },
+        {
+          "id": "MCE-033",
+          "name": "Semiconductor manufacturing"
+        },
+        {
+          "id": "MCE-034",
+          "name": "Computer hardware manufacturing"
+        },
+        {
+          "id": "MCE-035",
+          "name": "Communication equipment manufacturing"
+        },
+        {
+          "id": "MCE-036",
+          "name": "Consumer electronics manufacturing"
+        },
+        {
+          "id": "MCE-037",
+          "name": "Medical device manufacturing"
+        },
+        {
+          "id": "MCE-038",
+          "name": "Optical instrument manufacturing"
+        },
+        {
+          "id": "MCE-039",
+          "name": "Machinery manufacturing"
+        },
+        {
+          "id": "MCE-040",
+          "name": "Agricultural machinery manufacturing"
+        },
+        {
+          "id": "MCE-041",
+          "name": "Construction machinery manufacturing"
+        },
+        {
+          "id": "MCE-042",
+          "name": "Industrial equipment manufacturing"
+        },
+        {
+          "id": "MCE-043",
+          "name": "Motor vehicle manufacturing"
+        },
+        {
+          "id": "MCE-044",
+          "name": "Automotive parts manufacturing"
+        },
+        {
+          "id": "MCE-045",
+          "name": "Motorcycle manufacturing"
+        },
+        {
+          "id": "MCE-046",
+          "name": "Shipbuilding"
+        },
+        {
+          "id": "MCE-047",
+          "name": "Boat building"
+        },
+        {
+          "id": "MCE-048",
+          "name": "Aircraft component manufacturing"
+        },
+        {
+          "id": "MCE-049",
+          "name": "Railway equipment manufacturing"
+        },
+        {
+          "id": "MCE-050",
+          "name": "Jewelry manufacturing"
+        },
+        {
+          "id": "MCE-051",
+          "name": "Musical instrument manufacturing"
+        },
+        {
+          "id": "MCE-052",
+          "name": "Toy manufacturing"
+        },
+        {
+          "id": "MCE-053",
+          "name": "Sports equipment manufacturing"
+        },
+        {
+          "id": "MCE-054",
+          "name": "Recycling manufacturing"
+        },
+        {
+          "id": "MCE-055",
+          "name": "Industrial repair and installation"
+        }
+      ]
+    },
+    {
+      "id": "utilities_waste",
+      "name": "Electricity, Gas, Water, and Waste Management",
+      "business_lines": [
+        {
+          "id": "UTL-001",
+          "name": "Electric power generation"
+        },
+        {
+          "id": "UTL-002",
+          "name": "Coal power generation"
+        },
+        {
+          "id": "UTL-003",
+          "name": "Natural gas power generation"
+        },
+        {
+          "id": "UTL-004",
+          "name": "Hydroelectric power generation"
+        },
+        {
+          "id": "UTL-005",
+          "name": "Geothermal power generation"
+        },
+        {
+          "id": "UTL-006",
+          "name": "Solar power generation"
+        },
+        {
+          "id": "UTL-007",
+          "name": "Wind power generation"
+        },
+        {
+          "id": "UTL-008",
+          "name": "Biomass power generation"
+        },
+        {
+          "id": "UTL-009",
+          "name": "Electric power transmission"
+        },
+        {
+          "id": "UTL-010",
+          "name": "Electric power distribution"
+        },
+        {
+          "id": "UTL-011",
+          "name": "Electricity retailing"
+        },
+        {
+          "id": "UTL-012",
+          "name": "Electric cooperative operation"
+        },
+        {
+          "id": "UTL-013",
+          "name": "Gas production"
+        },
+        {
+          "id": "UTL-014",
+          "name": "Gas distribution"
+        },
+        {
+          "id": "UTL-015",
+          "name": "Liquefied petroleum gas distribution"
+        },
+        {
+          "id": "UTL-016",
+          "name": "Steam supply"
+        },
+        {
+          "id": "UTL-017",
+          "name": "District cooling services"
+        },
+        {
+          "id": "UTL-018",
+          "name": "Water collection"
+        },
+        {
+          "id": "UTL-019",
+          "name": "Water treatment"
+        },
+        {
+          "id": "UTL-020",
+          "name": "Water distribution"
+        },
+        {
+          "id": "UTL-021",
+          "name": "Water utility operation"
+        },
+        {
+          "id": "UTL-022",
+          "name": "Sewerage services"
+        },
+        {
+          "id": "UTL-023",
+          "name": "Wastewater treatment"
+        },
+        {
+          "id": "UTL-024",
+          "name": "Septic tank services"
+        },
+        {
+          "id": "UTL-025",
+          "name": "Solid waste collection"
+        },
+        {
+          "id": "UTL-026",
+          "name": "Waste transportation"
+        },
+        {
+          "id": "UTL-027",
+          "name": "Waste sorting"
+        },
+        {
+          "id": "UTL-028",
+          "name": "Materials recovery facility operation"
+        },
+        {
+          "id": "UTL-029",
+          "name": "Recycling services"
+        },
+        {
+          "id": "UTL-030",
+          "name": "Hazardous waste management"
+        },
+        {
+          "id": "UTL-031",
+          "name": "Medical waste management"
+        },
+        {
+          "id": "UTL-032",
+          "name": "Electronic waste recycling"
+        },
+        {
+          "id": "UTL-033",
+          "name": "Composting services"
+        },
+        {
+          "id": "UTL-034",
+          "name": "Sanitation services"
+        },
+        {
+          "id": "UTL-035",
+          "name": "Environmental remediation"
+        },
+        {
+          "id": "UTL-036",
+          "name": "Pollution control services"
+        }
+      ]
+    },
+    {
+      "id": "construction",
+      "name": "Construction and Civil Works",
+      "business_lines": [
+        {
+          "id": "CON-001",
+          "name": "Residential building construction"
+        },
+        {
+          "id": "CON-002",
+          "name": "Commercial building construction"
+        },
+        {
+          "id": "CON-003",
+          "name": "Industrial building construction"
+        },
+        {
+          "id": "CON-004",
+          "name": "Institutional building construction"
+        },
+        {
+          "id": "CON-005",
+          "name": "Road construction"
+        },
+        {
+          "id": "CON-006",
+          "name": "Bridge construction"
+        },
+        {
+          "id": "CON-007",
+          "name": "Railway construction"
+        },
+        {
+          "id": "CON-008",
+          "name": "Airport construction"
+        },
+        {
+          "id": "CON-009",
+          "name": "Seaport construction"
+        },
+        {
+          "id": "CON-010",
+          "name": "Dam construction"
+        },
+        {
+          "id": "CON-011",
+          "name": "Irrigation system construction"
+        },
+        {
+          "id": "CON-012",
+          "name": "Water supply system construction"
+        },
+        {
+          "id": "CON-013",
+          "name": "Sewerage system construction"
+        },
+        {
+          "id": "CON-014",
+          "name": "Power plant construction"
+        },
+        {
+          "id": "CON-015",
+          "name": "Power line construction"
+        },
+        {
+          "id": "CON-016",
+          "name": "Telecommunications infrastructure construction"
+        },
+        {
+          "id": "CON-017",
+          "name": "Pipeline construction"
+        },
+        {
+          "id": "CON-018",
+          "name": "Land development"
+        },
+        {
+          "id": "CON-019",
+          "name": "Subdivision development"
+        },
+        {
+          "id": "CON-020",
+          "name": "Site preparation"
+        },
+        {
+          "id": "CON-021",
+          "name": "Demolition services"
+        },
+        {
+          "id": "CON-022",
+          "name": "Excavation services"
+        },
+        {
+          "id": "CON-023",
+          "name": "Foundation construction"
+        },
+        {
+          "id": "CON-024",
+          "name": "Concrete works"
+        },
+        {
+          "id": "CON-025",
+          "name": "Masonry services"
+        },
+        {
+          "id": "CON-026",
+          "name": "Carpentry services"
+        },
+        {
+          "id": "CON-027",
+          "name": "Roofing services"
+        },
+        {
+          "id": "CON-028",
+          "name": "Plumbing installation"
+        },
+        {
+          "id": "CON-029",
+          "name": "Electrical installation"
+        },
+        {
+          "id": "CON-030",
+          "name": "Mechanical installation"
+        },
+        {
+          "id": "CON-031",
+          "name": "Air-conditioning installation"
+        },
+        {
+          "id": "CON-032",
+          "name": "Fire protection system installation"
+        },
+        {
+          "id": "CON-033",
+          "name": "Elevator installation"
+        },
+        {
+          "id": "CON-034",
+          "name": "Insulation services"
+        },
+        {
+          "id": "CON-035",
+          "name": "Waterproofing services"
+        },
+        {
+          "id": "CON-036",
+          "name": "Painting services"
+        },
+        {
+          "id": "CON-037",
+          "name": "Flooring installation"
+        },
+        {
+          "id": "CON-038",
+          "name": "Tile installation"
+        },
+        {
+          "id": "CON-039",
+          "name": "Glass and glazing services"
+        },
+        {
+          "id": "CON-040",
+          "name": "Interior fit-out services"
+        },
+        {
+          "id": "CON-041",
+          "name": "Building completion services"
+        },
+        {
+          "id": "CON-042",
+          "name": "Scaffolding services"
+        },
+        {
+          "id": "CON-043",
+          "name": "Construction equipment rental"
+        },
+        {
+          "id": "CON-044",
+          "name": "Construction project management"
+        },
+        {
+          "id": "CON-045",
+          "name": "General contracting"
+        },
+        {
+          "id": "CON-046",
+          "name": "Specialty contracting"
+        }
+      ]
+    },
+    {
+      "id": "wholesale_retail",
+      "name": "Wholesale and Retail Trade",
+      "business_lines": [
+        {
+          "id": "RET-001",
+          "name": "Agricultural product wholesaling"
+        },
+        {
+          "id": "RET-002",
+          "name": "Food product wholesaling"
+        },
+        {
+          "id": "RET-003",
+          "name": "Beverage wholesaling"
+        },
+        {
+          "id": "RET-004",
+          "name": "Tobacco wholesaling"
+        },
+        {
+          "id": "RET-005",
+          "name": "Pharmaceutical wholesaling"
+        },
+        {
+          "id": "RET-006",
+          "name": "Medical supply wholesaling"
+        },
+        {
+          "id": "RET-007",
+          "name": "Chemical product wholesaling"
+        },
+        {
+          "id": "RET-008",
+          "name": "Construction material wholesaling"
+        },
+        {
+          "id": "RET-009",
+          "name": "Hardware wholesaling"
+        },
+        {
+          "id": "RET-010",
+          "name": "Machinery and equipment wholesaling"
+        },
+        {
+          "id": "RET-011",
+          "name": "Computer equipment wholesaling"
+        },
+        {
+          "id": "RET-012",
+          "name": "Electronics wholesaling"
+        },
+        {
+          "id": "RET-013",
+          "name": "Automotive parts wholesaling"
+        },
+        {
+          "id": "RET-014",
+          "name": "Textile wholesaling"
+        },
+        {
+          "id": "RET-015",
+          "name": "Garment wholesaling"
+        },
+        {
+          "id": "RET-016",
+          "name": "Furniture wholesaling"
+        },
+        {
+          "id": "RET-017",
+          "name": "Household goods wholesaling"
+        },
+        {
+          "id": "RET-018",
+          "name": "General merchandise wholesaling"
+        },
+        {
+          "id": "RET-019",
+          "name": "Import and export trading"
+        },
+        {
+          "id": "RET-020",
+          "name": "Commission-based wholesaling"
+        },
+        {
+          "id": "RET-021",
+          "name": "Supermarket operation"
+        },
+        {
+          "id": "RET-022",
+          "name": "Grocery store operation"
+        },
+        {
+          "id": "RET-023",
+          "name": "Convenience store operation"
+        },
+        {
+          "id": "RET-024",
+          "name": "Department store operation"
+        },
+        {
+          "id": "RET-025",
+          "name": "Shopping mall operation"
+        },
+        {
+          "id": "RET-026",
+          "name": "Public market retailing"
+        },
+        {
+          "id": "RET-027",
+          "name": "Sari-sari store operation"
+        },
+        {
+          "id": "RET-028",
+          "name": "Food specialty retailing"
+        },
+        {
+          "id": "RET-029",
+          "name": "Beverage retailing"
+        },
+        {
+          "id": "RET-030",
+          "name": "Pharmacy operation"
+        },
+        {
+          "id": "RET-031",
+          "name": "Medical supply retailing"
+        },
+        {
+          "id": "RET-032",
+          "name": "Hardware store operation"
+        },
+        {
+          "id": "RET-033",
+          "name": "Construction supply retailing"
+        },
+        {
+          "id": "RET-034",
+          "name": "Appliance retailing"
+        },
+        {
+          "id": "RET-035",
+          "name": "Electronics retailing"
+        },
+        {
+          "id": "RET-036",
+          "name": "Computer store operation"
+        },
+        {
+          "id": "RET-037",
+          "name": "Mobile phone retailing"
+        },
+        {
+          "id": "RET-038",
+          "name": "Furniture retailing"
+        },
+        {
+          "id": "RET-039",
+          "name": "Home furnishing retailing"
+        },
+        {
+          "id": "RET-040",
+          "name": "Clothing retailing"
+        },
+        {
+          "id": "RET-041",
+          "name": "Footwear retailing"
+        },
+        {
+          "id": "RET-042",
+          "name": "Jewelry retailing"
+        },
+        {
+          "id": "RET-043",
+          "name": "Cosmetics retailing"
+        },
+        {
+          "id": "RET-044",
+          "name": "Bookstore operation"
+        },
+        {
+          "id": "RET-045",
+          "name": "Stationery retailing"
+        },
+        {
+          "id": "RET-046",
+          "name": "Sporting goods retailing"
+        },
+        {
+          "id": "RET-047",
+          "name": "Toy retailing"
+        },
+        {
+          "id": "RET-048",
+          "name": "Pet supply retailing"
+        },
+        {
+          "id": "RET-049",
+          "name": "Agricultural supply retailing"
+        },
+        {
+          "id": "RET-050",
+          "name": "Automotive parts retailing"
+        },
+        {
+          "id": "RET-051",
+          "name": "Motor vehicle dealership"
+        },
+        {
+          "id": "RET-052",
+          "name": "Motorcycle dealership"
+        },
+        {
+          "id": "RET-053",
+          "name": "Used vehicle dealership"
+        },
+        {
+          "id": "RET-054",
+          "name": "Fuel retailing"
+        },
+        {
+          "id": "RET-055",
+          "name": "Liquefied petroleum gas retailing"
+        },
+        {
+          "id": "RET-056",
+          "name": "Online retailing"
+        },
+        {
+          "id": "RET-057",
+          "name": "Marketplace e-commerce"
+        },
+        {
+          "id": "RET-058",
+          "name": "Direct selling"
+        },
+        {
+          "id": "RET-059",
+          "name": "Vending machine retailing"
+        },
+        {
+          "id": "RET-060",
+          "name": "Secondhand goods retailing"
+        },
+        {
+          "id": "RET-061",
+          "name": "Pawnshop retail services"
+        },
+        {
+          "id": "RET-062",
+          "name": "Duty-free retailing"
+        }
+      ]
+    },
+    {
+      "id": "transport_storage",
+      "name": "Transportation, Warehousing, and Logistics",
+      "business_lines": [
+        {
+          "id": "TRN-001",
+          "name": "Urban bus transportation"
+        },
+        {
+          "id": "TRN-002",
+          "name": "Provincial bus transportation"
+        },
+        {
+          "id": "TRN-003",
+          "name": "Jeepney transportation"
+        },
+        {
+          "id": "TRN-004",
+          "name": "Taxi operation"
+        },
+        {
+          "id": "TRN-005",
+          "name": "Ride-hailing services"
+        },
+        {
+          "id": "TRN-006",
+          "name": "Car rental with driver"
+        },
+        {
+          "id": "TRN-007",
+          "name": "Car rental without driver"
+        },
+        {
+          "id": "TRN-008",
+          "name": "Motorcycle taxi services"
+        },
+        {
+          "id": "TRN-009",
+          "name": "Road freight transportation"
+        },
+        {
+          "id": "TRN-010",
+          "name": "Trucking services"
+        },
+        {
+          "id": "TRN-011",
+          "name": "Courier services"
+        },
+        {
+          "id": "TRN-012",
+          "name": "Parcel delivery services"
+        },
+        {
+          "id": "TRN-013",
+          "name": "Food delivery services"
+        },
+        {
+          "id": "TRN-014",
+          "name": "Moving services"
+        },
+        {
+          "id": "TRN-015",
+          "name": "School transport services"
+        },
+        {
+          "id": "TRN-016",
+          "name": "Employee shuttle services"
+        },
+        {
+          "id": "TRN-017",
+          "name": "Ambulance transportation"
+        },
+        {
+          "id": "TRN-018",
+          "name": "Rail passenger transportation"
+        },
+        {
+          "id": "TRN-019",
+          "name": "Rail freight transportation"
+        },
+        {
+          "id": "TRN-020",
+          "name": "Sea passenger transportation"
+        },
+        {
+          "id": "TRN-021",
+          "name": "Ferry operation"
+        },
+        {
+          "id": "TRN-022",
+          "name": "Domestic shipping"
+        },
+        {
+          "id": "TRN-023",
+          "name": "International shipping"
+        },
+        {
+          "id": "TRN-024",
+          "name": "Cargo shipping"
+        },
+        {
+          "id": "TRN-025",
+          "name": "Tanker shipping"
+        },
+        {
+          "id": "TRN-026",
+          "name": "Barge operation"
+        },
+        {
+          "id": "TRN-027",
+          "name": "Port operation"
+        },
+        {
+          "id": "TRN-028",
+          "name": "Cargo handling"
+        },
+        {
+          "id": "TRN-029",
+          "name": "Stevedoring services"
+        },
+        {
+          "id": "TRN-030",
+          "name": "Ship agency services"
+        },
+        {
+          "id": "TRN-031",
+          "name": "Freight forwarding"
+        },
+        {
+          "id": "TRN-032",
+          "name": "Customs brokerage"
+        },
+        {
+          "id": "TRN-033",
+          "name": "Air passenger transportation"
+        },
+        {
+          "id": "TRN-034",
+          "name": "Air cargo transportation"
+        },
+        {
+          "id": "TRN-035",
+          "name": "Charter flight services"
+        },
+        {
+          "id": "TRN-036",
+          "name": "Airport operation"
+        },
+        {
+          "id": "TRN-037",
+          "name": "Ground handling services"
+        },
+        {
+          "id": "TRN-038",
+          "name": "Aircraft maintenance services"
+        },
+        {
+          "id": "TRN-039",
+          "name": "Pipeline transportation"
+        },
+        {
+          "id": "TRN-040",
+          "name": "Warehouse operation"
+        },
+        {
+          "id": "TRN-041",
+          "name": "Cold storage operation"
+        },
+        {
+          "id": "TRN-042",
+          "name": "Bonded warehouse operation"
+        },
+        {
+          "id": "TRN-043",
+          "name": "Container yard operation"
+        },
+        {
+          "id": "TRN-044",
+          "name": "Distribution center operation"
+        },
+        {
+          "id": "TRN-045",
+          "name": "Inventory management services"
+        },
+        {
+          "id": "TRN-046",
+          "name": "Third-party logistics"
+        },
+        {
+          "id": "TRN-047",
+          "name": "Supply chain management services"
+        },
+        {
+          "id": "TRN-048",
+          "name": "Packing and crating services"
+        },
+        {
+          "id": "TRN-049",
+          "name": "Transport support services"
+        },
+        {
+          "id": "TRN-050",
+          "name": "Parking facility operation"
+        },
+        {
+          "id": "TRN-051",
+          "name": "Toll road operation"
+        }
+      ]
+    },
+    {
+      "id": "accommodation_food",
+      "name": "Accommodation, Food, and Beverage Services",
+      "business_lines": [
+        {
+          "id": "HOS-001",
+          "name": "Hotel operation"
+        },
+        {
+          "id": "HOS-002",
+          "name": "Resort operation"
+        },
+        {
+          "id": "HOS-003",
+          "name": "Motel operation"
+        },
+        {
+          "id": "HOS-004",
+          "name": "Hostel operation"
+        },
+        {
+          "id": "HOS-005",
+          "name": "Pension house operation"
+        },
+        {
+          "id": "HOS-006",
+          "name": "Bed-and-breakfast operation"
+        },
+        {
+          "id": "HOS-007",
+          "name": "Serviced apartment operation"
+        },
+        {
+          "id": "HOS-008",
+          "name": "Vacation rental operation"
+        },
+        {
+          "id": "HOS-009",
+          "name": "Camping ground operation"
+        },
+        {
+          "id": "HOS-010",
+          "name": "Dormitory operation"
+        },
+        {
+          "id": "HOS-011",
+          "name": "Restaurant operation"
+        },
+        {
+          "id": "HOS-012",
+          "name": "Fast-food restaurant operation"
+        },
+        {
+          "id": "HOS-013",
+          "name": "Casual dining operation"
+        },
+        {
+          "id": "HOS-014",
+          "name": "Fine dining operation"
+        },
+        {
+          "id": "HOS-015",
+          "name": "Buffet restaurant operation"
+        },
+        {
+          "id": "HOS-016",
+          "name": "Cafeteria operation"
+        },
+        {
+          "id": "HOS-017",
+          "name": "Food court stall operation"
+        },
+        {
+          "id": "HOS-018",
+          "name": "Carinderia operation"
+        },
+        {
+          "id": "HOS-019",
+          "name": "Canteen operation"
+        },
+        {
+          "id": "HOS-020",
+          "name": "Catering services"
+        },
+        {
+          "id": "HOS-021",
+          "name": "Mobile food service"
+        },
+        {
+          "id": "HOS-022",
+          "name": "Food truck operation"
+        },
+        {
+          "id": "HOS-023",
+          "name": "Bakery retail operation"
+        },
+        {
+          "id": "HOS-024",
+          "name": "Coffee shop operation"
+        },
+        {
+          "id": "HOS-025",
+          "name": "Milk tea shop operation"
+        },
+        {
+          "id": "HOS-026",
+          "name": "Bar operation"
+        },
+        {
+          "id": "HOS-027",
+          "name": "Pub operation"
+        },
+        {
+          "id": "HOS-028",
+          "name": "Nightclub operation"
+        },
+        {
+          "id": "HOS-029",
+          "name": "Cocktail lounge operation"
+        },
+        {
+          "id": "HOS-030",
+          "name": "Juice bar operation"
+        },
+        {
+          "id": "HOS-031",
+          "name": "Dessert shop operation"
+        },
+        {
+          "id": "HOS-032",
+          "name": "Ice cream shop operation"
+        },
+        {
+          "id": "HOS-033",
+          "name": "Food kiosk operation"
+        },
+        {
+          "id": "HOS-034",
+          "name": "Cloud kitchen operation"
+        },
+        {
+          "id": "HOS-035",
+          "name": "Meal delivery service"
+        },
+        {
+          "id": "HOS-036",
+          "name": "Institutional food service"
+        },
+        {
+          "id": "HOS-037",
+          "name": "Airline catering"
+        },
+        {
+          "id": "HOS-038",
+          "name": "School food service"
+        },
+        {
+          "id": "HOS-039",
+          "name": "Hospital food service"
+        }
+      ]
+    },
+    {
+      "id": "information_communication",
+      "name": "Information, Communications, Media, and Publishing",
+      "business_lines": [
+        {
+          "id": "INF-001",
+          "name": "Book publishing"
+        },
+        {
+          "id": "INF-002",
+          "name": "Newspaper publishing"
+        },
+        {
+          "id": "INF-003",
+          "name": "Magazine publishing"
+        },
+        {
+          "id": "INF-004",
+          "name": "Directory publishing"
+        },
+        {
+          "id": "INF-005",
+          "name": "Educational publishing"
+        },
+        {
+          "id": "INF-006",
+          "name": "Digital publishing"
+        },
+        {
+          "id": "INF-007",
+          "name": "Software publishing"
+        },
+        {
+          "id": "INF-008",
+          "name": "Game publishing"
+        },
+        {
+          "id": "INF-009",
+          "name": "Film production"
+        },
+        {
+          "id": "INF-010",
+          "name": "Video production"
+        },
+        {
+          "id": "INF-011",
+          "name": "Television program production"
+        },
+        {
+          "id": "INF-012",
+          "name": "Animation production"
+        },
+        {
+          "id": "INF-013",
+          "name": "Post-production services"
+        },
+        {
+          "id": "INF-014",
+          "name": "Film distribution"
+        },
+        {
+          "id": "INF-015",
+          "name": "Cinema operation"
+        },
+        {
+          "id": "INF-016",
+          "name": "Music recording"
+        },
+        {
+          "id": "INF-017",
+          "name": "Music publishing"
+        },
+        {
+          "id": "INF-018",
+          "name": "Audio production"
+        },
+        {
+          "id": "INF-019",
+          "name": "Podcast production"
+        },
+        {
+          "id": "INF-020",
+          "name": "Radio broadcasting"
+        },
+        {
+          "id": "INF-021",
+          "name": "Television broadcasting"
+        },
+        {
+          "id": "INF-022",
+          "name": "Cable television services"
+        },
+        {
+          "id": "INF-023",
+          "name": "Satellite television services"
+        },
+        {
+          "id": "INF-024",
+          "name": "News agency services"
+        },
+        {
+          "id": "INF-025",
+          "name": "Journalism services"
+        },
+        {
+          "id": "INF-026",
+          "name": "Photography services"
+        },
+        {
+          "id": "INF-027",
+          "name": "Photojournalism services"
+        },
+        {
+          "id": "INF-028",
+          "name": "Graphic design services"
+        },
+        {
+          "id": "INF-029",
+          "name": "Advertising content production"
+        },
+        {
+          "id": "INF-030",
+          "name": "Public relations communications"
+        },
+        {
+          "id": "INF-031",
+          "name": "Fixed-line telecommunications"
+        },
+        {
+          "id": "INF-032",
+          "name": "Mobile telecommunications"
+        },
+        {
+          "id": "INF-033",
+          "name": "Internet service provision"
+        },
+        {
+          "id": "INF-034",
+          "name": "Satellite communications"
+        },
+        {
+          "id": "INF-035",
+          "name": "Data center operation"
+        },
+        {
+          "id": "INF-036",
+          "name": "Cloud infrastructure services"
+        },
+        {
+          "id": "INF-037",
+          "name": "Web hosting services"
+        },
+        {
+          "id": "INF-038",
+          "name": "Domain registration services"
+        },
+        {
+          "id": "INF-039",
+          "name": "Network services"
+        },
+        {
+          "id": "INF-040",
+          "name": "Voice-over-IP services"
+        },
+        {
+          "id": "INF-041",
+          "name": "Computer programming services"
+        },
+        {
+          "id": "INF-042",
+          "name": "Software development"
+        },
+        {
+          "id": "INF-043",
+          "name": "Web development"
+        },
+        {
+          "id": "INF-044",
+          "name": "Mobile application development"
+        },
+        {
+          "id": "INF-045",
+          "name": "Game development"
+        },
+        {
+          "id": "INF-046",
+          "name": "IT consulting"
+        },
+        {
+          "id": "INF-047",
+          "name": "Systems integration"
+        },
+        {
+          "id": "INF-048",
+          "name": "IT support services"
+        },
+        {
+          "id": "INF-049",
+          "name": "Computer facilities management"
+        },
+        {
+          "id": "INF-050",
+          "name": "Cybersecurity services"
+        },
+        {
+          "id": "INF-051",
+          "name": "Data analytics services"
+        },
+        {
+          "id": "INF-052",
+          "name": "Artificial intelligence services"
+        },
+        {
+          "id": "INF-053",
+          "name": "Database services"
+        },
+        {
+          "id": "INF-054",
+          "name": "Geographic information system services"
+        },
+        {
+          "id": "INF-055",
+          "name": "Blockchain services"
+        },
+        {
+          "id": "INF-056",
+          "name": "Digital platform operation"
+        },
+        {
+          "id": "INF-057",
+          "name": "Search engine services"
+        },
+        {
+          "id": "INF-058",
+          "name": "Online portal operation"
+        },
+        {
+          "id": "INF-059",
+          "name": "Social media platform operation"
+        },
+        {
+          "id": "INF-060",
+          "name": "Streaming media services"
+        }
+      ]
+    },
+    {
+      "id": "finance_insurance",
+      "name": "Financial and Insurance Activities",
+      "business_lines": [
+        {
+          "id": "FIN-001",
+          "name": "Central banking"
+        },
+        {
+          "id": "FIN-002",
+          "name": "Commercial banking"
+        },
+        {
+          "id": "FIN-003",
+          "name": "Rural banking"
+        },
+        {
+          "id": "FIN-004",
+          "name": "Thrift banking"
+        },
+        {
+          "id": "FIN-005",
+          "name": "Digital banking"
+        },
+        {
+          "id": "FIN-006",
+          "name": "Cooperative banking"
+        },
+        {
+          "id": "FIN-007",
+          "name": "Islamic banking"
+        },
+        {
+          "id": "FIN-008",
+          "name": "Savings and loan services"
+        },
+        {
+          "id": "FIN-009",
+          "name": "Microfinance services"
+        },
+        {
+          "id": "FIN-010",
+          "name": "Consumer lending"
+        },
+        {
+          "id": "FIN-011",
+          "name": "Business lending"
+        },
+        {
+          "id": "FIN-012",
+          "name": "Mortgage lending"
+        },
+        {
+          "id": "FIN-013",
+          "name": "Credit card services"
+        },
+        {
+          "id": "FIN-014",
+          "name": "Payment processing"
+        },
+        {
+          "id": "FIN-015",
+          "name": "Electronic wallet services"
+        },
+        {
+          "id": "FIN-016",
+          "name": "Remittance services"
+        },
+        {
+          "id": "FIN-017",
+          "name": "Foreign exchange services"
+        },
+        {
+          "id": "FIN-018",
+          "name": "Investment banking"
+        },
+        {
+          "id": "FIN-019",
+          "name": "Securities brokerage"
+        },
+        {
+          "id": "FIN-020",
+          "name": "Stock exchange operation"
+        },
+        {
+          "id": "FIN-021",
+          "name": "Commodity trading"
+        },
+        {
+          "id": "FIN-022",
+          "name": "Fund management"
+        },
+        {
+          "id": "FIN-023",
+          "name": "Asset management"
+        },
+        {
+          "id": "FIN-024",
+          "name": "Wealth management"
+        },
+        {
+          "id": "FIN-025",
+          "name": "Investment advisory services"
+        },
+        {
+          "id": "FIN-026",
+          "name": "Venture capital"
+        },
+        {
+          "id": "FIN-027",
+          "name": "Private equity"
+        },
+        {
+          "id": "FIN-028",
+          "name": "Mutual fund operation"
+        },
+        {
+          "id": "FIN-029",
+          "name": "Trust services"
+        },
+        {
+          "id": "FIN-030",
+          "name": "Financial planning services"
+        },
+        {
+          "id": "FIN-031",
+          "name": "Accounting services"
+        },
+        {
+          "id": "FIN-032",
+          "name": "Bookkeeping services"
+        },
+        {
+          "id": "FIN-033",
+          "name": "Auditing services"
+        },
+        {
+          "id": "FIN-034",
+          "name": "Tax preparation services"
+        },
+        {
+          "id": "FIN-035",
+          "name": "Payroll processing services"
+        },
+        {
+          "id": "FIN-036",
+          "name": "Life insurance"
+        },
+        {
+          "id": "FIN-037",
+          "name": "Non-life insurance"
+        },
+        {
+          "id": "FIN-038",
+          "name": "Health insurance"
+        },
+        {
+          "id": "FIN-039",
+          "name": "Property insurance"
+        },
+        {
+          "id": "FIN-040",
+          "name": "Motor vehicle insurance"
+        },
+        {
+          "id": "FIN-041",
+          "name": "Reinsurance"
+        },
+        {
+          "id": "FIN-042",
+          "name": "Insurance brokerage"
+        },
+        {
+          "id": "FIN-043",
+          "name": "Insurance agency services"
+        },
+        {
+          "id": "FIN-044",
+          "name": "Insurance claims services"
+        },
+        {
+          "id": "FIN-045",
+          "name": "Pension fund management"
+        },
+        {
+          "id": "FIN-046",
+          "name": "Credit rating services"
+        },
+        {
+          "id": "FIN-047",
+          "name": "Financial technology services"
+        },
+        {
+          "id": "FIN-048",
+          "name": "Cryptocurrency exchange services"
+        },
+        {
+          "id": "FIN-049",
+          "name": "Blockchain financial services"
+        },
+        {
+          "id": "FIN-050",
+          "name": "Pawnshop financial services"
+        },
+        {
+          "id": "FIN-051",
+          "name": "Leasing finance"
+        },
+        {
+          "id": "FIN-052",
+          "name": "Factoring services"
+        },
+        {
+          "id": "FIN-053",
+          "name": "Debt collection services"
+        }
+      ]
+    },
+    {
+      "id": "real_estate",
+      "name": "Real Estate and Property Services",
+      "business_lines": [
+        {
+          "id": "REA-001",
+          "name": "Residential property development"
+        },
+        {
+          "id": "REA-002",
+          "name": "Commercial property development"
+        },
+        {
+          "id": "REA-003",
+          "name": "Industrial property development"
+        },
+        {
+          "id": "REA-004",
+          "name": "Mixed-use property development"
+        },
+        {
+          "id": "REA-005",
+          "name": "Subdivision development services"
+        },
+        {
+          "id": "REA-006",
+          "name": "Condominium development"
+        },
+        {
+          "id": "REA-007",
+          "name": "Socialized housing development"
+        },
+        {
+          "id": "REA-008",
+          "name": "Real estate brokerage"
+        },
+        {
+          "id": "REA-009",
+          "name": "Real estate agency services"
+        },
+        {
+          "id": "REA-010",
+          "name": "Property sales services"
+        },
+        {
+          "id": "REA-011",
+          "name": "Property leasing"
+        },
+        {
+          "id": "REA-012",
+          "name": "Residential property rental"
+        },
+        {
+          "id": "REA-013",
+          "name": "Commercial property rental"
+        },
+        {
+          "id": "REA-014",
+          "name": "Industrial property rental"
+        },
+        {
+          "id": "REA-015",
+          "name": "Coworking space operation"
+        },
+        {
+          "id": "REA-016",
+          "name": "Real estate appraisal"
+        },
+        {
+          "id": "REA-017",
+          "name": "Property valuation"
+        },
+        {
+          "id": "REA-018",
+          "name": "Property management"
+        },
+        {
+          "id": "REA-019",
+          "name": "Condominium management"
+        },
+        {
+          "id": "REA-020",
+          "name": "Homeowners association management"
+        },
+        {
+          "id": "REA-021",
+          "name": "Building administration"
+        },
+        {
+          "id": "REA-022",
+          "name": "Facilities management"
+        },
+        {
+          "id": "REA-023",
+          "name": "Land acquisition services"
+        },
+        {
+          "id": "REA-024",
+          "name": "Real estate consultancy"
+        },
+        {
+          "id": "REA-025",
+          "name": "Real estate investment"
+        },
+        {
+          "id": "REA-026",
+          "name": "Real estate investment trust operation"
+        },
+        {
+          "id": "REA-027",
+          "name": "Title and property documentation services"
+        },
+        {
+          "id": "REA-028",
+          "name": "Vacation property management"
+        },
+        {
+          "id": "REA-029",
+          "name": "Self-storage facility operation"
+        },
+        {
+          "id": "REA-030",
+          "name": "Cemetery property development"
+        }
+      ]
+    },
+    {
+      "id": "professional_scientific_technical",
+      "name": "Professional, Scientific, and Technical Services",
+      "business_lines": [
+        {
+          "id": "PST-001",
+          "name": "Legal services"
+        },
+        {
+          "id": "PST-002",
+          "name": "Corporate legal services"
+        },
+        {
+          "id": "PST-003",
+          "name": "Litigation services"
+        },
+        {
+          "id": "PST-004",
+          "name": "Notarial services"
+        },
+        {
+          "id": "PST-005",
+          "name": "Patent and trademark services"
+        },
+        {
+          "id": "PST-006",
+          "name": "Management consulting"
+        },
+        {
+          "id": "PST-007",
+          "name": "Business consulting"
+        },
+        {
+          "id": "PST-008",
+          "name": "Strategy consulting"
+        },
+        {
+          "id": "PST-009",
+          "name": "Operations consulting"
+        },
+        {
+          "id": "PST-010",
+          "name": "Human resources consulting"
+        },
+        {
+          "id": "PST-011",
+          "name": "Marketing consulting"
+        },
+        {
+          "id": "PST-012",
+          "name": "Engineering consulting"
+        },
+        {
+          "id": "PST-013",
+          "name": "Civil engineering services"
+        },
+        {
+          "id": "PST-014",
+          "name": "Mechanical engineering services"
+        },
+        {
+          "id": "PST-015",
+          "name": "Electrical engineering services"
+        },
+        {
+          "id": "PST-016",
+          "name": "Environmental engineering services"
+        },
+        {
+          "id": "PST-017",
+          "name": "Architectural services"
+        },
+        {
+          "id": "PST-018",
+          "name": "Interior design services"
+        },
+        {
+          "id": "PST-019",
+          "name": "Landscape architecture services"
+        },
+        {
+          "id": "PST-020",
+          "name": "Urban planning services"
+        },
+        {
+          "id": "PST-021",
+          "name": "Quantity surveying"
+        },
+        {
+          "id": "PST-022",
+          "name": "Land surveying"
+        },
+        {
+          "id": "PST-023",
+          "name": "Geodetic services"
+        },
+        {
+          "id": "PST-024",
+          "name": "Technical testing"
+        },
+        {
+          "id": "PST-025",
+          "name": "Materials testing"
+        },
+        {
+          "id": "PST-026",
+          "name": "Product inspection"
+        },
+        {
+          "id": "PST-027",
+          "name": "Certification services"
+        },
+        {
+          "id": "PST-028",
+          "name": "Laboratory testing"
+        },
+        {
+          "id": "PST-029",
+          "name": "Research and development"
+        },
+        {
+          "id": "PST-030",
+          "name": "Biotechnology research"
+        },
+        {
+          "id": "PST-031",
+          "name": "Agricultural research"
+        },
+        {
+          "id": "PST-032",
+          "name": "Medical research"
+        },
+        {
+          "id": "PST-033",
+          "name": "Social science research"
+        },
+        {
+          "id": "PST-034",
+          "name": "Market research"
+        },
+        {
+          "id": "PST-035",
+          "name": "Public opinion polling"
+        },
+        {
+          "id": "PST-036",
+          "name": "Scientific consulting"
+        },
+        {
+          "id": "PST-037",
+          "name": "Environmental consulting"
+        },
+        {
+          "id": "PST-038",
+          "name": "Environmental impact assessment"
+        },
+        {
+          "id": "PST-039",
+          "name": "Sustainability consulting"
+        },
+        {
+          "id": "PST-040",
+          "name": "Energy consulting"
+        },
+        {
+          "id": "PST-041",
+          "name": "Veterinary services"
+        },
+        {
+          "id": "PST-042",
+          "name": "Industrial design services"
+        },
+        {
+          "id": "PST-043",
+          "name": "Product design services"
+        },
+        {
+          "id": "PST-044",
+          "name": "Fashion design services"
+        },
+        {
+          "id": "PST-045",
+          "name": "Translation services"
+        },
+        {
+          "id": "PST-046",
+          "name": "Interpretation services"
+        },
+        {
+          "id": "PST-047",
+          "name": "Technical writing services"
+        },
+        {
+          "id": "PST-048",
+          "name": "Photography studio services"
+        },
+        {
+          "id": "PST-049",
+          "name": "Drone mapping services"
+        },
+        {
+          "id": "PST-050",
+          "name": "Weather forecasting services"
+        }
+      ]
+    },
+    {
+      "id": "administrative_support",
+      "name": "Administrative, Employment, Travel, Security, and Support Services",
+      "business_lines": [
+        {
+          "id": "ADM-001",
+          "name": "Employment agency services"
+        },
+        {
+          "id": "ADM-002",
+          "name": "Recruitment services"
+        },
+        {
+          "id": "ADM-003",
+          "name": "Executive search services"
+        },
+        {
+          "id": "ADM-004",
+          "name": "Temporary staffing services"
+        },
+        {
+          "id": "ADM-005",
+          "name": "Manpower outsourcing"
+        },
+        {
+          "id": "ADM-006",
+          "name": "Human resources outsourcing"
+        },
+        {
+          "id": "ADM-007",
+          "name": "Professional employer organization services"
+        },
+        {
+          "id": "ADM-008",
+          "name": "Call center services"
+        },
+        {
+          "id": "ADM-009",
+          "name": "Contact center services"
+        },
+        {
+          "id": "ADM-010",
+          "name": "Business process outsourcing"
+        },
+        {
+          "id": "ADM-011",
+          "name": "Knowledge process outsourcing"
+        },
+        {
+          "id": "ADM-012",
+          "name": "Legal process outsourcing"
+        },
+        {
+          "id": "ADM-013",
+          "name": "Back-office processing"
+        },
+        {
+          "id": "ADM-014",
+          "name": "Data entry services"
+        },
+        {
+          "id": "ADM-015",
+          "name": "Virtual assistant services"
+        },
+        {
+          "id": "ADM-016",
+          "name": "Shared service center operation"
+        },
+        {
+          "id": "ADM-017",
+          "name": "Office administrative services"
+        },
+        {
+          "id": "ADM-018",
+          "name": "Document processing services"
+        },
+        {
+          "id": "ADM-019",
+          "name": "Records management services"
+        },
+        {
+          "id": "ADM-020",
+          "name": "Document storage services"
+        },
+        {
+          "id": "ADM-021",
+          "name": "Collection agency services"
+        },
+        {
+          "id": "ADM-022",
+          "name": "Credit investigation services"
+        },
+        {
+          "id": "ADM-023",
+          "name": "Travel agency services"
+        },
+        {
+          "id": "ADM-024",
+          "name": "Tour operator services"
+        },
+        {
+          "id": "ADM-025",
+          "name": "Tour reservation services"
+        },
+        {
+          "id": "ADM-026",
+          "name": "Event management services"
+        },
+        {
+          "id": "ADM-027",
+          "name": "Convention organizing"
+        },
+        {
+          "id": "ADM-028",
+          "name": "Trade show organizing"
+        },
+        {
+          "id": "ADM-029",
+          "name": "Security agency services"
+        },
+        {
+          "id": "ADM-030",
+          "name": "Private investigation services"
+        },
+        {
+          "id": "ADM-031",
+          "name": "Armored transport services"
+        },
+        {
+          "id": "ADM-032",
+          "name": "Security system services"
+        },
+        {
+          "id": "ADM-033",
+          "name": "Janitorial services"
+        },
+        {
+          "id": "ADM-034",
+          "name": "Building cleaning services"
+        },
+        {
+          "id": "ADM-035",
+          "name": "Industrial cleaning services"
+        },
+        {
+          "id": "ADM-036",
+          "name": "Pest control services"
+        },
+        {
+          "id": "ADM-037",
+          "name": "Landscape maintenance services"
+        },
+        {
+          "id": "ADM-038",
+          "name": "Groundskeeping services"
+        },
+        {
+          "id": "ADM-039",
+          "name": "Packaging services"
+        },
+        {
+          "id": "ADM-040",
+          "name": "Photocopying services"
+        },
+        {
+          "id": "ADM-041",
+          "name": "Mailing services"
+        },
+        {
+          "id": "ADM-042",
+          "name": "Telephone answering services"
+        },
+        {
+          "id": "ADM-043",
+          "name": "Facilities support services"
+        },
+        {
+          "id": "ADM-044",
+          "name": "Equipment leasing"
+        },
+        {
+          "id": "ADM-045",
+          "name": "Office equipment rental"
+        },
+        {
+          "id": "ADM-046",
+          "name": "Vehicle rental"
+        },
+        {
+          "id": "ADM-047",
+          "name": "Heavy equipment rental"
+        },
+        {
+          "id": "ADM-048",
+          "name": "Household goods rental"
+        }
+      ]
+    },
+    {
+      "id": "government_public_admin",
+      "name": "Public Administration, Government, and Defense",
+      "business_lines": [
+        {
+          "id": "GOV-001",
+          "name": "National government administration"
+        },
+        {
+          "id": "GOV-002",
+          "name": "Regional government administration"
+        },
+        {
+          "id": "GOV-003",
+          "name": "Provincial government administration"
+        },
+        {
+          "id": "GOV-004",
+          "name": "City government administration"
+        },
+        {
+          "id": "GOV-005",
+          "name": "Municipal government administration"
+        },
+        {
+          "id": "GOV-006",
+          "name": "Barangay government administration"
+        },
+        {
+          "id": "GOV-007",
+          "name": "Legislative services"
+        },
+        {
+          "id": "GOV-008",
+          "name": "Judicial services"
+        },
+        {
+          "id": "GOV-009",
+          "name": "Public prosecution services"
+        },
+        {
+          "id": "GOV-010",
+          "name": "Public legal assistance"
+        },
+        {
+          "id": "GOV-011",
+          "name": "Tax administration"
+        },
+        {
+          "id": "GOV-012",
+          "name": "Customs administration"
+        },
+        {
+          "id": "GOV-013",
+          "name": "Economic planning"
+        },
+        {
+          "id": "GOV-014",
+          "name": "Public finance administration"
+        },
+        {
+          "id": "GOV-015",
+          "name": "Trade regulation"
+        },
+        {
+          "id": "GOV-016",
+          "name": "Labor administration"
+        },
+        {
+          "id": "GOV-017",
+          "name": "Social welfare administration"
+        },
+        {
+          "id": "GOV-018",
+          "name": "Health administration"
+        },
+        {
+          "id": "GOV-019",
+          "name": "Education administration"
+        },
+        {
+          "id": "GOV-020",
+          "name": "Agriculture administration"
+        },
+        {
+          "id": "GOV-021",
+          "name": "Fisheries administration"
+        },
+        {
+          "id": "GOV-022",
+          "name": "Environmental administration"
+        },
+        {
+          "id": "GOV-023",
+          "name": "Land management administration"
+        },
+        {
+          "id": "GOV-024",
+          "name": "Housing administration"
+        },
+        {
+          "id": "GOV-025",
+          "name": "Transport administration"
+        },
+        {
+          "id": "GOV-026",
+          "name": "Tourism administration"
+        },
+        {
+          "id": "GOV-027",
+          "name": "Disaster risk reduction management"
+        },
+        {
+          "id": "GOV-028",
+          "name": "Emergency response services"
+        },
+        {
+          "id": "GOV-029",
+          "name": "Fire protection services"
+        },
+        {
+          "id": "GOV-030",
+          "name": "Police services"
+        },
+        {
+          "id": "GOV-031",
+          "name": "Corrections services"
+        },
+        {
+          "id": "GOV-032",
+          "name": "National defense"
+        },
+        {
+          "id": "GOV-033",
+          "name": "Coast guard services"
+        },
+        {
+          "id": "GOV-034",
+          "name": "Foreign affairs"
+        },
+        {
+          "id": "GOV-035",
+          "name": "Election administration"
+        },
+        {
+          "id": "GOV-036",
+          "name": "Civil registration services"
+        },
+        {
+          "id": "GOV-037",
+          "name": "Government licensing services"
+        },
+        {
+          "id": "GOV-038",
+          "name": "Public records administration"
+        },
+        {
+          "id": "GOV-039",
+          "name": "Social security administration"
+        },
+        {
+          "id": "GOV-040",
+          "name": "Public pension administration"
+        },
+        {
+          "id": "GOV-041",
+          "name": "Indigenous peoples services"
+        }
+      ]
+    },
+    {
+      "id": "education",
+      "name": "Education and Training",
+      "business_lines": [
+        {
+          "id": "EDU-001",
+          "name": "Early childhood education"
+        },
+        {
+          "id": "EDU-002",
+          "name": "Preschool education"
+        },
+        {
+          "id": "EDU-003",
+          "name": "Kindergarten education"
+        },
+        {
+          "id": "EDU-004",
+          "name": "Elementary education"
+        },
+        {
+          "id": "EDU-005",
+          "name": "Junior high school education"
+        },
+        {
+          "id": "EDU-006",
+          "name": "Senior high school education"
+        },
+        {
+          "id": "EDU-007",
+          "name": "Special education"
+        },
+        {
+          "id": "EDU-008",
+          "name": "Alternative learning system services"
+        },
+        {
+          "id": "EDU-009",
+          "name": "Technical-vocational education"
+        },
+        {
+          "id": "EDU-010",
+          "name": "Community college education"
+        },
+        {
+          "id": "EDU-011",
+          "name": "Higher education"
+        },
+        {
+          "id": "EDU-012",
+          "name": "University education"
+        },
+        {
+          "id": "EDU-013",
+          "name": "Graduate education"
+        },
+        {
+          "id": "EDU-014",
+          "name": "Professional review center operation"
+        },
+        {
+          "id": "EDU-015",
+          "name": "Tutorial services"
+        },
+        {
+          "id": "EDU-016",
+          "name": "Online tutoring"
+        },
+        {
+          "id": "EDU-017",
+          "name": "Language school operation"
+        },
+        {
+          "id": "EDU-018",
+          "name": "English language training"
+        },
+        {
+          "id": "EDU-019",
+          "name": "Computer training"
+        },
+        {
+          "id": "EDU-020",
+          "name": "Business training"
+        },
+        {
+          "id": "EDU-021",
+          "name": "Corporate training"
+        },
+        {
+          "id": "EDU-022",
+          "name": "Leadership training"
+        },
+        {
+          "id": "EDU-023",
+          "name": "Skills training"
+        },
+        {
+          "id": "EDU-024",
+          "name": "Driving school operation"
+        },
+        {
+          "id": "EDU-025",
+          "name": "Flight school operation"
+        },
+        {
+          "id": "EDU-026",
+          "name": "Maritime training"
+        },
+        {
+          "id": "EDU-027",
+          "name": "Safety training"
+        },
+        {
+          "id": "EDU-028",
+          "name": "Sports instruction"
+        },
+        {
+          "id": "EDU-029",
+          "name": "Music education"
+        },
+        {
+          "id": "EDU-030",
+          "name": "Dance education"
+        },
+        {
+          "id": "EDU-031",
+          "name": "Art education"
+        },
+        {
+          "id": "EDU-032",
+          "name": "Religious education"
+        },
+        {
+          "id": "EDU-033",
+          "name": "Educational support services"
+        },
+        {
+          "id": "EDU-034",
+          "name": "Student review and assessment services"
+        },
+        {
+          "id": "EDU-035",
+          "name": "Curriculum development services"
+        },
+        {
+          "id": "EDU-036",
+          "name": "Education consulting"
+        },
+        {
+          "id": "EDU-037",
+          "name": "Learning management platform services"
+        },
+        {
+          "id": "EDU-038",
+          "name": "Educational technology services"
+        },
+        {
+          "id": "EDU-039",
+          "name": "School transportation services"
+        },
+        {
+          "id": "EDU-040",
+          "name": "Library education services"
+        }
+      ]
+    },
+    {
+      "id": "health_social_work",
+      "name": "Human Health and Social Work",
+      "business_lines": [
+        {
+          "id": "HLT-001",
+          "name": "General hospital services"
+        },
+        {
+          "id": "HLT-002",
+          "name": "Specialty hospital services"
+        },
+        {
+          "id": "HLT-003",
+          "name": "Public hospital services"
+        },
+        {
+          "id": "HLT-004",
+          "name": "Private hospital services"
+        },
+        {
+          "id": "HLT-005",
+          "name": "Medical clinic services"
+        },
+        {
+          "id": "HLT-006",
+          "name": "Family medicine services"
+        },
+        {
+          "id": "HLT-007",
+          "name": "Specialty medical services"
+        },
+        {
+          "id": "HLT-008",
+          "name": "Surgical center operation"
+        },
+        {
+          "id": "HLT-009",
+          "name": "Dental clinic services"
+        },
+        {
+          "id": "HLT-010",
+          "name": "Orthodontic services"
+        },
+        {
+          "id": "HLT-011",
+          "name": "Medical laboratory services"
+        },
+        {
+          "id": "HLT-012",
+          "name": "Diagnostic imaging services"
+        },
+        {
+          "id": "HLT-013",
+          "name": "Dialysis center operation"
+        },
+        {
+          "id": "HLT-014",
+          "name": "Cancer treatment services"
+        },
+        {
+          "id": "HLT-015",
+          "name": "Physical therapy services"
+        },
+        {
+          "id": "HLT-016",
+          "name": "Occupational therapy services"
+        },
+        {
+          "id": "HLT-017",
+          "name": "Speech therapy services"
+        },
+        {
+          "id": "HLT-018",
+          "name": "Mental health services"
+        },
+        {
+          "id": "HLT-019",
+          "name": "Psychiatric services"
+        },
+        {
+          "id": "HLT-020",
+          "name": "Psychological counseling"
+        },
+        {
+          "id": "HLT-021",
+          "name": "Rehabilitation center operation"
+        },
+        {
+          "id": "HLT-022",
+          "name": "Drug rehabilitation services"
+        },
+        {
+          "id": "HLT-023",
+          "name": "Ambulance services"
+        },
+        {
+          "id": "HLT-024",
+          "name": "Blood bank services"
+        },
+        {
+          "id": "HLT-025",
+          "name": "Pharmacy services"
+        },
+        {
+          "id": "HLT-026",
+          "name": "Telemedicine services"
+        },
+        {
+          "id": "HLT-027",
+          "name": "Home healthcare services"
+        },
+        {
+          "id": "HLT-028",
+          "name": "Nursing care services"
+        },
+        {
+          "id": "HLT-029",
+          "name": "Birthing center services"
+        },
+        {
+          "id": "HLT-030",
+          "name": "Midwifery services"
+        },
+        {
+          "id": "HLT-031",
+          "name": "Nutrition and dietetics services"
+        },
+        {
+          "id": "HLT-032",
+          "name": "Optometry services"
+        },
+        {
+          "id": "HLT-033",
+          "name": "Eye care services"
+        },
+        {
+          "id": "HLT-034",
+          "name": "Hearing care services"
+        },
+        {
+          "id": "HLT-035",
+          "name": "Chiropractic services"
+        },
+        {
+          "id": "HLT-036",
+          "name": "Traditional medicine services"
+        },
+        {
+          "id": "HLT-037",
+          "name": "Veterinary clinic services"
+        },
+        {
+          "id": "HLT-038",
+          "name": "Residential care services"
+        },
+        {
+          "id": "HLT-039",
+          "name": "Elderly care services"
+        },
+        {
+          "id": "HLT-040",
+          "name": "Childcare center operation"
+        },
+        {
+          "id": "HLT-041",
+          "name": "Orphanage services"
+        },
+        {
+          "id": "HLT-042",
+          "name": "Disability support services"
+        },
+        {
+          "id": "HLT-043",
+          "name": "Community health services"
+        },
+        {
+          "id": "HLT-044",
+          "name": "Public health services"
+        },
+        {
+          "id": "HLT-045",
+          "name": "Social work services"
+        },
+        {
+          "id": "HLT-046",
+          "name": "Family welfare services"
+        },
+        {
+          "id": "HLT-047",
+          "name": "Youth welfare services"
+        },
+        {
+          "id": "HLT-048",
+          "name": "Disaster relief services"
+        },
+        {
+          "id": "HLT-049",
+          "name": "Charitable health services"
+        },
+        {
+          "id": "HLT-050",
+          "name": "Health insurance administration"
+        }
+      ]
+    },
+    {
+      "id": "arts_entertainment_recreation",
+      "name": "Arts, Entertainment, Sports, and Recreation",
+      "business_lines": [
+        {
+          "id": "AER-001",
+          "name": "Performing arts production"
+        },
+        {
+          "id": "AER-002",
+          "name": "Theater operation"
+        },
+        {
+          "id": "AER-003",
+          "name": "Dance company operation"
+        },
+        {
+          "id": "AER-004",
+          "name": "Music performance services"
+        },
+        {
+          "id": "AER-005",
+          "name": "Concert production"
+        },
+        {
+          "id": "AER-006",
+          "name": "Artist management"
+        },
+        {
+          "id": "AER-007",
+          "name": "Talent management"
+        },
+        {
+          "id": "AER-008",
+          "name": "Creative arts services"
+        },
+        {
+          "id": "AER-009",
+          "name": "Visual arts studio operation"
+        },
+        {
+          "id": "AER-010",
+          "name": "Art gallery operation"
+        },
+        {
+          "id": "AER-011",
+          "name": "Museum operation"
+        },
+        {
+          "id": "AER-012",
+          "name": "Historical site operation"
+        },
+        {
+          "id": "AER-013",
+          "name": "Cultural center operation"
+        },
+        {
+          "id": "AER-014",
+          "name": "Library operation"
+        },
+        {
+          "id": "AER-015",
+          "name": "Archive operation"
+        },
+        {
+          "id": "AER-016",
+          "name": "Botanical garden operation"
+        },
+        {
+          "id": "AER-017",
+          "name": "Zoo operation"
+        },
+        {
+          "id": "AER-018",
+          "name": "Nature park operation"
+        },
+        {
+          "id": "AER-019",
+          "name": "Amusement park operation"
+        },
+        {
+          "id": "AER-020",
+          "name": "Theme park operation"
+        },
+        {
+          "id": "AER-021",
+          "name": "Indoor amusement center operation"
+        },
+        {
+          "id": "AER-022",
+          "name": "Gaming arcade operation"
+        },
+        {
+          "id": "AER-023",
+          "name": "Casino operation"
+        },
+        {
+          "id": "AER-024",
+          "name": "Lottery operation"
+        },
+        {
+          "id": "AER-025",
+          "name": "Online gaming operation"
+        },
+        {
+          "id": "AER-026",
+          "name": "Esports organization"
+        },
+        {
+          "id": "AER-027",
+          "name": "Sports club operation"
+        },
+        {
+          "id": "AER-028",
+          "name": "Fitness center operation"
+        },
+        {
+          "id": "AER-029",
+          "name": "Gym operation"
+        },
+        {
+          "id": "AER-030",
+          "name": "Swimming pool operation"
+        },
+        {
+          "id": "AER-031",
+          "name": "Sports facility operation"
+        },
+        {
+          "id": "AER-032",
+          "name": "Golf course operation"
+        },
+        {
+          "id": "AER-033",
+          "name": "Resort recreation services"
+        },
+        {
+          "id": "AER-034",
+          "name": "Adventure tourism operation"
+        },
+        {
+          "id": "AER-035",
+          "name": "Diving center operation"
+        },
+        {
+          "id": "AER-036",
+          "name": "Surfing school operation"
+        },
+        {
+          "id": "AER-037",
+          "name": "Recreational fishing services"
+        },
+        {
+          "id": "AER-038",
+          "name": "Sports event promotion"
+        },
+        {
+          "id": "AER-039",
+          "name": "Recreation center operation"
+        },
+        {
+          "id": "AER-040",
+          "name": "Photography exhibition services"
+        }
+      ]
+    },
+    {
+      "id": "other_services",
+      "name": "Personal, Membership, Repair, and Other Services",
+      "business_lines": [
+        {
+          "id": "OSV-001",
+          "name": "Business association services"
+        },
+        {
+          "id": "OSV-002",
+          "name": "Professional association services"
+        },
+        {
+          "id": "OSV-003",
+          "name": "Employer organization services"
+        },
+        {
+          "id": "OSV-004",
+          "name": "Labor union services"
+        },
+        {
+          "id": "OSV-005",
+          "name": "Religious organization services"
+        },
+        {
+          "id": "OSV-006",
+          "name": "Political organization services"
+        },
+        {
+          "id": "OSV-007",
+          "name": "Civic organization services"
+        },
+        {
+          "id": "OSV-008",
+          "name": "Community organization services"
+        },
+        {
+          "id": "OSV-009",
+          "name": "Youth organization services"
+        },
+        {
+          "id": "OSV-010",
+          "name": "Environmental advocacy services"
+        },
+        {
+          "id": "OSV-011",
+          "name": "Charitable organization services"
+        },
+        {
+          "id": "OSV-012",
+          "name": "Nonprofit organization services"
+        },
+        {
+          "id": "OSV-013",
+          "name": "Grant-making foundation services"
+        },
+        {
+          "id": "OSV-014",
+          "name": "Computer repair services"
+        },
+        {
+          "id": "OSV-015",
+          "name": "Mobile phone repair services"
+        },
+        {
+          "id": "OSV-016",
+          "name": "Consumer electronics repair"
+        },
+        {
+          "id": "OSV-017",
+          "name": "Home appliance repair"
+        },
+        {
+          "id": "OSV-018",
+          "name": "Furniture repair"
+        },
+        {
+          "id": "OSV-019",
+          "name": "Footwear repair"
+        },
+        {
+          "id": "OSV-020",
+          "name": "Watch and jewelry repair"
+        },
+        {
+          "id": "OSV-021",
+          "name": "Motor vehicle repair"
+        },
+        {
+          "id": "OSV-022",
+          "name": "Motorcycle repair"
+        },
+        {
+          "id": "OSV-023",
+          "name": "Car wash services"
+        },
+        {
+          "id": "OSV-024",
+          "name": "Vulcanizing services"
+        },
+        {
+          "id": "OSV-025",
+          "name": "Laundry services"
+        },
+        {
+          "id": "OSV-026",
+          "name": "Dry-cleaning services"
+        },
+        {
+          "id": "OSV-027",
+          "name": "Salon services"
+        },
+        {
+          "id": "OSV-028",
+          "name": "Barbershop services"
+        },
+        {
+          "id": "OSV-029",
+          "name": "Beauty care services"
+        },
+        {
+          "id": "OSV-030",
+          "name": "Spa services"
+        },
+        {
+          "id": "OSV-031",
+          "name": "Massage services"
+        },
+        {
+          "id": "OSV-032",
+          "name": "Nail care services"
+        },
+        {
+          "id": "OSV-033",
+          "name": "Tattoo services"
+        },
+        {
+          "id": "OSV-034",
+          "name": "Pet grooming services"
+        },
+        {
+          "id": "OSV-035",
+          "name": "Pet boarding services"
+        },
+        {
+          "id": "OSV-036",
+          "name": "Funeral services"
+        },
+        {
+          "id": "OSV-037",
+          "name": "Cremation services"
+        },
+        {
+          "id": "OSV-038",
+          "name": "Cemetery operation"
+        },
+        {
+          "id": "OSV-039",
+          "name": "Wedding services"
+        },
+        {
+          "id": "OSV-040",
+          "name": "Dating and matchmaking services"
+        },
+        {
+          "id": "OSV-041",
+          "name": "Astrology services"
+        },
+        {
+          "id": "OSV-042",
+          "name": "Domestic household services"
+        },
+        {
+          "id": "OSV-043",
+          "name": "Personal concierge services"
+        }
+      ]
+    },
+    {
+      "id": "tourism_specific",
+      "name": "Tourism and Destination Services",
+      "business_lines": [
+        {
+          "id": "TOU-001",
+          "name": "Inbound tourism services"
+        },
+        {
+          "id": "TOU-002",
+          "name": "Outbound tourism services"
+        },
+        {
+          "id": "TOU-003",
+          "name": "Domestic tourism services"
+        },
+        {
+          "id": "TOU-004",
+          "name": "Ecotourism operation"
+        },
+        {
+          "id": "TOU-005",
+          "name": "Community-based tourism"
+        },
+        {
+          "id": "TOU-006",
+          "name": "Cultural tourism services"
+        },
+        {
+          "id": "TOU-007",
+          "name": "Heritage tourism services"
+        },
+        {
+          "id": "TOU-008",
+          "name": "Farm tourism operation"
+        },
+        {
+          "id": "TOU-009",
+          "name": "Medical tourism services"
+        },
+        {
+          "id": "TOU-010",
+          "name": "Wellness tourism services"
+        },
+        {
+          "id": "TOU-011",
+          "name": "Religious tourism services"
+        },
+        {
+          "id": "TOU-012",
+          "name": "Educational tourism services"
+        },
+        {
+          "id": "TOU-013",
+          "name": "Adventure tourism services"
+        },
+        {
+          "id": "TOU-014",
+          "name": "Marine tourism services"
+        },
+        {
+          "id": "TOU-015",
+          "name": "Island hopping services"
+        },
+        {
+          "id": "TOU-016",
+          "name": "Cruise tourism services"
+        },
+        {
+          "id": "TOU-017",
+          "name": "Tour guiding services"
+        },
+        {
+          "id": "TOU-018",
+          "name": "Destination management services"
+        },
+        {
+          "id": "TOU-019",
+          "name": "Tourism marketing services"
+        },
+        {
+          "id": "TOU-020",
+          "name": "Visitor information services"
+        },
+        {
+          "id": "TOU-021",
+          "name": "Souvenir retailing"
+        },
+        {
+          "id": "TOU-022",
+          "name": "Tourist transport services"
+        },
+        {
+          "id": "TOU-023",
+          "name": "Tourist accommodation services"
+        },
+        {
+          "id": "TOU-024",
+          "name": "Travel booking platform operation"
+        },
+        {
+          "id": "TOU-025",
+          "name": "Visa assistance services"
+        },
+        {
+          "id": "TOU-026",
+          "name": "Passport assistance services"
+        }
+      ]
+    },
+    {
+      "id": "digital_emerging",
+      "name": "Digital, Platform, and Emerging Industries",
+      "business_lines": [
+        {
+          "id": "DIG-001",
+          "name": "Artificial intelligence development"
+        },
+        {
+          "id": "DIG-002",
+          "name": "Generative artificial intelligence services"
+        },
+        {
+          "id": "DIG-003",
+          "name": "Machine learning services"
+        },
+        {
+          "id": "DIG-004",
+          "name": "Data annotation services"
+        },
+        {
+          "id": "DIG-005",
+          "name": "Robotics development"
+        },
+        {
+          "id": "DIG-006",
+          "name": "Industrial automation services"
+        },
+        {
+          "id": "DIG-007",
+          "name": "Internet of Things services"
+        },
+        {
+          "id": "DIG-008",
+          "name": "Cloud computing services"
+        },
+        {
+          "id": "DIG-009",
+          "name": "Edge computing services"
+        },
+        {
+          "id": "DIG-010",
+          "name": "Quantum computing research"
+        },
+        {
+          "id": "DIG-011",
+          "name": "Virtual reality development"
+        },
+        {
+          "id": "DIG-012",
+          "name": "Augmented reality development"
+        },
+        {
+          "id": "DIG-013",
+          "name": "Metaverse platform operation"
+        },
+        {
+          "id": "DIG-014",
+          "name": "Virtual production services"
+        },
+        {
+          "id": "DIG-015",
+          "name": "3D printing services"
+        },
+        {
+          "id": "DIG-016",
+          "name": "Additive manufacturing"
+        },
+        {
+          "id": "DIG-017",
+          "name": "Drone services"
+        },
+        {
+          "id": "DIG-018",
+          "name": "Drone delivery services"
+        },
+        {
+          "id": "DIG-019",
+          "name": "Autonomous vehicle technology"
+        },
+        {
+          "id": "DIG-020",
+          "name": "Electric vehicle charging services"
+        },
+        {
+          "id": "DIG-021",
+          "name": "Battery energy storage services"
+        },
+        {
+          "id": "DIG-022",
+          "name": "Smart city technology services"
+        },
+        {
+          "id": "DIG-023",
+          "name": "Digital identity services"
+        },
+        {
+          "id": "DIG-024",
+          "name": "Electronic signature services"
+        },
+        {
+          "id": "DIG-025",
+          "name": "Digital authentication services"
+        },
+        {
+          "id": "DIG-026",
+          "name": "Data privacy consulting"
+        },
+        {
+          "id": "DIG-027",
+          "name": "Digital accessibility services"
+        },
+        {
+          "id": "DIG-028",
+          "name": "Online marketplace operation"
+        },
+        {
+          "id": "DIG-029",
+          "name": "Gig economy platform operation"
+        },
+        {
+          "id": "DIG-030",
+          "name": "Freelancer platform operation"
+        },
+        {
+          "id": "DIG-031",
+          "name": "Creator economy platform operation"
+        },
+        {
+          "id": "DIG-032",
+          "name": "Influencer marketing services"
+        },
+        {
+          "id": "DIG-033",
+          "name": "Live streaming services"
+        },
+        {
+          "id": "DIG-034",
+          "name": "Subscription platform operation"
+        },
+        {
+          "id": "DIG-035",
+          "name": "Software-as-a-service"
+        },
+        {
+          "id": "DIG-036",
+          "name": "Platform-as-a-service"
+        },
+        {
+          "id": "DIG-037",
+          "name": "Infrastructure-as-a-service"
+        },
+        {
+          "id": "DIG-038",
+          "name": "No-code software development"
+        },
+        {
+          "id": "DIG-039",
+          "name": "Low-code software development"
+        },
+        {
+          "id": "DIG-040",
+          "name": "Climate technology services"
+        },
+        {
+          "id": "DIG-041",
+          "name": "Carbon accounting services"
+        },
+        {
+          "id": "DIG-042",
+          "name": "Carbon credit trading"
+        },
+        {
+          "id": "DIG-043",
+          "name": "Circular economy services"
+        },
+        {
+          "id": "DIG-044",
+          "name": "Precision agriculture technology"
+        },
+        {
+          "id": "DIG-045",
+          "name": "Agricultural technology services"
+        },
+        {
+          "id": "DIG-046",
+          "name": "Health technology services"
+        },
+        {
+          "id": "DIG-047",
+          "name": "Property technology services"
+        },
+        {
+          "id": "DIG-048",
+          "name": "Regulatory technology services"
+        },
+        {
+          "id": "DIG-049",
+          "name": "Legal technology services"
+        }
+      ]
+    },
+    {
+      "id": "international_nonprofit_household",
+      "name": "International Organizations, Nonprofits, Households, and Other",
+      "business_lines": [
+        {
+          "id": "OTH-001",
+          "name": "International organization services"
+        },
+        {
+          "id": "OTH-002",
+          "name": "Foreign embassy services"
+        },
+        {
+          "id": "OTH-003",
+          "name": "Foreign consular services"
+        },
+        {
+          "id": "OTH-004",
+          "name": "International development services"
+        },
+        {
+          "id": "OTH-005",
+          "name": "Humanitarian aid services"
+        },
+        {
+          "id": "OTH-006",
+          "name": "Disaster response organization services"
+        },
+        {
+          "id": "OTH-007",
+          "name": "Non-government organization services"
+        },
+        {
+          "id": "OTH-008",
+          "name": "Civil society organization services"
+        },
+        {
+          "id": "OTH-009",
+          "name": "Cooperative operation"
+        },
+        {
+          "id": "OTH-010",
+          "name": "Credit cooperative operation"
+        },
+        {
+          "id": "OTH-011",
+          "name": "Consumer cooperative operation"
+        },
+        {
+          "id": "OTH-012",
+          "name": "Producer cooperative operation"
+        },
+        {
+          "id": "OTH-013",
+          "name": "Transport cooperative operation"
+        },
+        {
+          "id": "OTH-014",
+          "name": "Multipurpose cooperative operation"
+        },
+        {
+          "id": "OTH-015",
+          "name": "Homeowners association services"
+        },
+        {
+          "id": "OTH-016",
+          "name": "Private household employment"
+        },
+        {
+          "id": "OTH-017",
+          "name": "Household caregiving services"
+        },
+        {
+          "id": "OTH-018",
+          "name": "Household childcare services"
+        },
+        {
+          "id": "OTH-019",
+          "name": "Household cleaning services"
+        },
+        {
+          "id": "OTH-020",
+          "name": "Subsistence farming"
+        },
+        {
+          "id": "OTH-021",
+          "name": "Subsistence fishing"
+        },
+        {
+          "id": "OTH-022",
+          "name": "Family-operated microbusiness"
+        },
+        {
+          "id": "OTH-023",
+          "name": "Self-employed professional services"
+        },
+        {
+          "id": "OTH-024",
+          "name": "Freelance services"
+        },
+        {
+          "id": "OTH-025",
+          "name": "Unclassified business activity"
+        },
+        {
+          "id": "OTH-026",
+          "name": "Multiple lines of business"
+        },
+        {
+          "id": "OTH-027",
+          "name": "Other business activity"
+        },
+        {
+          "id": "OTH-028",
+          "name": "Not applicable"
+        },
+        {
+          "id": "OTH-029",
+          "name": "Unknown"
+        },
+        {
+          "id": "OTH-030",
+          "name": "Prefer not to say"
+        }
+      ]
+    }
+  ]
+}
+

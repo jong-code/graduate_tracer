@@ -2,7 +2,7 @@
 @section('title', 'Integrations')
 
 @section('content')
-<div class="tracer-wrapper" style="max-width: 800px;">
+<div class="tracer-wrapper admin-page" style="max-width: 800px;">
     <div class="tracer-header"><h1>Integrations - Free Load Reward</h1></div>
 
     @if (session('status'))
@@ -12,12 +12,16 @@
     <div class="tracer-card">
         <p class="text-muted">GCash numbers graduates submitted from their dashboard after completing their survey, in exchange for a free-load reward. Mark a row "Done" once the reward has actually been sent - that's a manual step, nothing here sends anything automatically.</p>
 
+        @include('partials.name-filter', ['action' => route('admin.integrations'), 'target' => '#integrationResults'])
+        <div id="integrationResults">
+        <p class="small text-muted" data-result-summary>{{ $users->total() }} graduates found.</p>
+        <div class="table-responsive">
         <table class="table table-sm align-middle">
             <thead><tr><th>Name</th><th>GCash Number</th><th>Status</th><th class="text-end">Actions</th></tr></thead>
             <tbody>
                 @forelse ($users as $u)
                     <tr>
-                        <td>{{ $u->name }}</td>
+                        <td>{{ $u->displayName() }}</td>
                         <td>{{ $u->userNumber?->number ?? '—' }}</td>
                         <td>
                             @if (! $u->userNumber)
@@ -38,10 +42,19 @@
                         </td>
                     </tr>
                 @empty
-                    <tr><td colspan="4" class="text-muted">No graduates yet.</td></tr>
+                    <tr><td colspan="4" class="text-muted">No graduates match this search.</td></tr>
                 @endforelse
             </tbody>
         </table>
+        </div>
+        {{ $users->links() }}
+        </div>
     </div>
 </div>
+
+@include('partials.auto-refresh', ['seconds' => 180])
+@endsection
+
+@section('scripts')
+@include('partials.realtime-name-search')
 @endsection

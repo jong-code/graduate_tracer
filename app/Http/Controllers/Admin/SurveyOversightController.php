@@ -26,7 +26,7 @@ class SurveyOversightController extends Controller
             'reason' => $request->input('reason'),
         ]);
 
-        $survey->load(['user', 'academicProgram', 'schoolYear', 'otherGraduates']);
+        $survey->load(['user', 'generalInformation.address', 'academicProgram', 'schoolYear', 'otherGraduates']);
 
         return view('admin.surveys.show', compact('survey'));
     }
@@ -53,14 +53,9 @@ class SurveyOversightController extends Controller
         ]);
 
         try {
-            $path = $exportService->export($survey);
+            return $exportService->downloadResponse($survey);
         } catch (\RuntimeException $e) {
             return back()->withErrors(['export' => $e->getMessage()]);
         }
-
-        $survey->loadMissing('generalInformation');
-        $safeName = \Illuminate\Support\Str::slug($survey->generalInformation?->name ?? "survey-{$survey->id}");
-
-        return response()->download($path, "gts_{$safeName}.docx")->deleteFileAfterSend(true);
     }
 }

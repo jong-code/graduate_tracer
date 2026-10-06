@@ -23,3 +23,9 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+
+# Do not serve secrets, logs, database exports, or backup files even if one
+# is accidentally copied into public/ during a manual deployment.
+<FilesMatch "(?:^\.|\.(?:bak|conf|dist|env|ini|log|old|sql|sqlite|ya?ml|zip)$)">
+    Require all denied
+</FilesMatch>

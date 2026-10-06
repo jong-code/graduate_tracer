@@ -31,6 +31,7 @@ class UserDashboardController extends Controller
      */
     public function saveNumber(Request $request)
     {
+        abort_unless($request->user()->survey?->submitted_at, 403, 'Complete your survey before claiming the reward.');
         $validated = $request->validate([
             'number' => ['required', 'string', 'max:20'],
         ]);

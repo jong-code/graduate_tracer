@@ -2,8 +2,9 @@
 @section('title', 'My Dashboard')
 
 @section('content')
-<div class="tracer-wrapper">
+<div class="tracer-wrapper user-page">
     <div class="tracer-header">
+        <p class="workspace-eyebrow">Graduate workspace</p>
         <h1>Welcome, {{ auth()->user()->name }}</h1>
         <p>Here's the status of your Graduate Tracer Survey</p>
     </div>
@@ -23,7 +24,20 @@
     @endif
 
     <div class="tracer-card mb-3">
-        <h2>Survey Status</h2>
+        <div class="graduate-status-header">
+            <h2>Your graduate survey</h2>
+            <span class="status-badge {{ $submissionStatus === 'submitted' ? 'success' : ($submissionStatus === 'draft' ? 'pending' : 'neutral') }}">
+                {{ $submissionStatus === 'submitted' ? 'Submitted' : ($submissionStatus === 'draft' ? 'Draft in progress' : 'Not started') }}
+            </span>
+        </div>
+        <div class="user-survey-progress" aria-label="Survey progress">
+            @foreach (['Start', 'Draft saved', 'Submitted'] as $progressLabel)
+                <div><span class="{{ ($submissionStatus === 'submitted' || ($submissionStatus === 'draft' && $loop->index < 2) || $loop->first) ? 'active' : '' }}">{{ $loop->iteration }}</span><small>{{ $progressLabel }}</small></div>
+            @endforeach
+        </div>
+        <p class="text-muted small mb-3">
+            <strong>Graduate Tracer Survey</strong> — This survey aims to gather information about the employment, career progression, and experiences of our graduates after completing their studies. The results will help the university assess the relevance and effectiveness of its academic programs and identify areas for improvement. Your responses will be treated with confidentiality and used for educational and program development purposes.
+        </p>
         @if ($submissionStatus === 'submitted')
             <p class="text-success fw-semibold mb-2">✓ Submitted on {{ $survey->submitted_at->format('M j, Y') }}</p>
             <a href="{{ route('user.survey') }}" class="btn-tracer-next d-inline-block">Update my answers</a>
@@ -34,23 +48,6 @@
         @else
             <p class="text-muted mb-2">You haven't started your survey yet.</p>
             <a href="{{ route('user.survey') }}" class="btn-tracer-next d-inline-block">Start survey</a>
-        @endif
-    </div>
-
-    <div class="tracer-card mb-3">
-        <h2>Consent</h2>
-        @if (auth()->user()->consent_given)
-            <p class="text-success mb-2">You've given consent for your data to be used for tracer research (as of {{ auth()->user()->consent_given_at->format('M j, Y') }}).</p>
-            <form method="POST" action="{{ route('user.profile.consent.withdraw') }}">
-                @csrf
-                <button type="submit" class="btn-tracer-prev">Withdraw consent</button>
-            </form>
-        @else
-            <p class="text-muted mb-2">You have not yet given consent. This is required before you can submit your survey.</p>
-            <form method="POST" action="{{ route('user.profile.consent.give') }}">
-                @csrf
-                <button type="submit" class="btn-tracer-submit">Give consent</button>
-            </form>
         @endif
     </div>
 
@@ -72,11 +69,7 @@
                 <div class="alert alert-danger py-2">{{ $message }}</div>
             @enderror
 
-            <form method="POST" action="{{ route('user.gcash-number.save') }}" class="d-flex gap-2 flex-wrap">
-                @csrf
-                <input type="text" name="number" class="form-control" style="max-width: 260px;" placeholder="e.g. 09171234567" value="{{ old('number', $userNumber?->number) }}" required maxlength="20">
-                <button type="submit" class="btn-tracer-submit">{{ $userNumber ? 'Update' : 'Submit' }}</button>
-            </form>
+            <button type="button" class="btn-tracer-submit" data-bs-toggle="modal" data-bs-target="#freeLoadRewardModal">{{ $userNumber ? 'Update GCash number' : 'Add GCash number' }}</button>
 
             @if ($userNumber?->is_done)
                 <p class="text-success mt-2 mb-0">✓ Your reward has been sent.</p>
@@ -86,4 +79,37 @@
         </div>
     @endif
 </div>
+@if ($submissionStatus === 'submitted')
+<div class="modal fade" id="freeLoadRewardModal" tabindex="-1" aria-labelledby="freeLoadRewardTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <form method="POST" action="{{ route('user.gcash-number.save') }}">
+                @csrf
+                <div class="modal-header">
+                    <h2 class="modal-title fs-5" id="freeLoadRewardTitle">Free Load Reward</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Your survey is submitted. Enter your GCash mobile number to receive your free load reward.</p>
+                    <label for="rewardNumber" class="form-label">GCash mobile number</label>
+                    <input id="rewardNumber" inputmode="tel" autocomplete="tel" type="text" name="number" class="form-control" placeholder="e.g. 09171234567" value="{{ old('number', $userNumber?->number) }}" required maxlength="20">
+                    @error('number')<div class="text-danger small mt-2">{{ $message }}</div>@enderror
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Later</button>
+                    <button type="submit" class="btn-tracer-submit">Save GCash number</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endif
+@endsection
+
+@section('scripts')
+@if ($submissionStatus === 'submitted' && ($errors->has('number') || (session('show_reward_modal') && ! $userNumber?->is_done)))
+<script>
+    bootstrap.Modal.getOrCreateInstance(document.getElementById('freeLoadRewardModal')).show();
+</script>
+@endif
 @endsection

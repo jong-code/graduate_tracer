@@ -11,7 +11,7 @@ class EmploymentData extends Model
 
     protected $fillable = [
         'survey_id', 'employment_status', 'present_employment_status',
-        'self_employed_skills', 'present_occupation', 'business_line',
+        'present_occupation', 'business_line',
         'place_of_work', 'is_first_job', 'first_job_related_to_course',
         'first_job_duration', 'how_found_first_job', 'time_to_land_first_job',
         'job_level_first', 'job_level_current', 'initial_gross_monthly_earning',
@@ -42,5 +42,15 @@ class EmploymentData extends Model
     public function competencies()
     {
         return $this->hasMany(Competency::class, 'employment_data_id');
+    }
+
+    public function selfEmployedSkills()
+    {
+        return $this->hasMany(SelfEmployedSkill::class, 'employment_data_id');
+    }
+
+    public function location()
+    {
+        return $this->hasOne(Location::class, 'employment_data_id');
     }
 }

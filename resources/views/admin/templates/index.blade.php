@@ -34,15 +34,20 @@
         <h2 class="h5">Export a Graduate's Survey</h2>
         <p class="text-muted">Fills the template above with each graduate's submitted answers. Preview opens the result without saving a file to your computer; Export downloads it.</p>
 
+        @include('partials.name-filter', ['action' => route('admin.templates'), 'target' => '#templateResults', 'sortable' => true])
+        <div id="templateResults">
+        <p class="small text-muted" data-result-summary>{{ $users->count() }} submitted surveys found.</p>
         @if ($users->isEmpty())
-            <p class="text-muted mb-0">No submitted surveys yet.</p>
+            <p class="text-muted mb-0">No submitted surveys match this search.</p>
         @else
+
+            <div class="table-responsive">
             <table class="table table-sm align-middle">
                 <thead><tr><th>Graduate</th><th>Email</th><th>Academic Program</th><th>Submitted</th><th class="text-end">Actions</th></tr></thead>
                 <tbody>
                     @foreach ($users as $u)
                         <tr>
-                            <td>{{ $u->name }}</td>
+                            <td>{{ $u->displayName() }}</td>
                             <td>{{ $u->email }}</td>
                             <td>{{ $u->survey->academicProgram->name ?? '—' }}</td>
                             <td>{{ $u->survey->submitted_at->format('M j, Y') }}</td>
@@ -54,7 +59,13 @@
                     @endforeach
                 </tbody>
             </table>
+            </div>
         @endif
+        </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+@include('partials.realtime-name-search')
 @endsection

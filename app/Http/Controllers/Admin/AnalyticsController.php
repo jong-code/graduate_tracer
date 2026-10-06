@@ -33,6 +33,10 @@ class AnalyticsController extends Controller
 
     private const YES_NO_LABELS = ['1' => 'Yes', '0' => 'No'];
 
+    private const ADVANCE_STUDY_REASON_LABELS = [
+        'promotion' => 'For promotion', 'professional_development' => 'For professional development', 'others' => 'Others',
+    ];
+
     private const NOT_EMPLOYED_REASON_LABELS = [
         'advance_study' => 'Advance or further study',
         'no_job_opportunity' => 'No job opportunity',
@@ -75,7 +79,23 @@ class AnalyticsController extends Controller
 
     public function index()
     {
-        return view('admin.analytics.index', ['charts' => $this->buildCharts()]);
+        $charts = $this->buildCharts();
+
+        // Group into the four survey sections for the tile-based display -
+        // same underlying dataset the CSV export uses, just organized
+        // differently, so the two views can never drift out of sync.
+        $sections = [
+            'A' => ['title' => 'A. General Information', 'charts' => []],
+            'B' => ['title' => 'B. Educational Background', 'charts' => []],
+            'C' => ['title' => 'C. Training(s) / Advance Studies', 'charts' => []],
+            'D' => ['title' => 'D. Employment Data', 'charts' => []],
+        ];
+        foreach ($charts as $chart) {
+            $sections[$chart['section']]['charts'][] = $chart;
+        }
+
+        return view('admin.analytics.index', ['charts' => $charts, 'sections' => $sections,
+            'totalRespondents' => GraduateTracerSurvey::forGraduateUsers()->whereNotNull('submitted_at')->count()]);
     }
 
     public function export()
@@ -102,20 +122,27 @@ class AnalyticsController extends Controller
     {
         // Only completed responses count toward the analytics - partial
         // drafts shouldn't skew the totals.
-        $surveyIds = GraduateTracerSurvey::whereNotNull('submitted_at')->pluck('id');
+        $surveyIds = GraduateTracerSurvey::forGraduateUsers()->whereNotNull('submitted_at')->pluck('id');
 
         $charts = [];
 
-        $charts[] = $this->fromColumn('sex', 'general_information', 'survey_id', $surveyIds, 'Sex', self::SEX_LABELS);
-        $charts[] = $this->fromColumn('civil_status', 'general_information', 'survey_id', $surveyIds, 'Civil Status', self::CIVIL_STATUS_LABELS);
+        $charts[] = $this->schoolYearChart($surveyIds);
+        $charts[] = $this->fromColumn('sex', 'general_information', 'survey_id', $surveyIds, 'Sex', self::SEX_LABELS, 'A');
+        $charts[] = $this->fromColumn('civil_status', 'general_information', 'survey_id', $surveyIds, 'Civil Status', self::CIVIL_STATUS_LABELS, 'A');
 
-        $charts[] = $this->fromColumn('employment_status', 'employment_data', 'survey_id', $surveyIds, 'Are you presently employed?', self::EMPLOYMENT_STATUS_LABELS);
-        $charts[] = $this->fromColumn('present_employment_status', 'employment_data', 'survey_id', $surveyIds, 'Present Employment Status', self::PRESENT_EMPLOYMENT_STATUS_LABELS);
-        $charts[] = $this->fromColumn('business_line', 'employment_data', 'survey_id', $surveyIds, 'Major Line of Business');
-        $charts[] = $this->fromColumn('place_of_work', 'employment_data', 'survey_id', $surveyIds, 'Place of Work', self::PLACE_OF_WORK_LABELS);
-        $charts[] = $this->fromColumn('is_first_job', 'employment_data', 'survey_id', $surveyIds, 'Is this your first job after college?', self::YES_NO_LABELS);
-        $charts[] = $this->fromColumn('first_job_related_to_course', 'employment_data', 'survey_id', $surveyIds, 'Is your first job related to your course?', self::YES_NO_LABELS);
-        $charts[] = $this->fromColumn('curriculum_relevant', 'employment_data', 'survey_id', $surveyIds, 'Was the curriculum relevant to your first job?', self::YES_NO_LABELS);
+        foreach (['undergraduate' => 'Undergraduate', 'graduate' => 'Graduate'] as $level => $levelLabel) {
+            $charts[] = $this->courseReasonChart($level, $levelLabel, $surveyIds);
+        }
+
+        $charts[] = $this->fromColumn('advance_study_reason', 'graduate_tracer_survey', 'id', $surveyIds, 'Reason for pursuing advance studies', self::ADVANCE_STUDY_REASON_LABELS, 'C');
+
+        $charts[] = $this->fromColumn('employment_status', 'employment_data', 'survey_id', $surveyIds, 'Are you presently employed?', self::EMPLOYMENT_STATUS_LABELS, 'D');
+        $charts[] = $this->fromColumn('present_employment_status', 'employment_data', 'survey_id', $surveyIds, 'Present Employment Status', self::PRESENT_EMPLOYMENT_STATUS_LABELS, 'D');
+        $charts[] = $this->fromColumn('business_line', 'employment_data', 'survey_id', $surveyIds, 'Major Line of Business', [], 'D');
+        $charts[] = $this->fromColumn('place_of_work', 'employment_data', 'survey_id', $surveyIds, 'Place of Work', self::PLACE_OF_WORK_LABELS, 'D');
+        $charts[] = $this->fromColumn('is_first_job', 'employment_data', 'survey_id', $surveyIds, 'Is this your first job after college?', self::YES_NO_LABELS, 'D');
+        $charts[] = $this->fromColumn('first_job_related_to_course', 'employment_data', 'survey_id', $surveyIds, 'Is your first job related to your course?', self::YES_NO_LABELS, 'D');
+        $charts[] = $this->fromColumn('curriculum_relevant', 'employment_data', 'survey_id', $surveyIds, 'Was the curriculum relevant to your first job?', self::YES_NO_LABELS, 'D');
 
         $charts[] = $this->fromChildTable('not_employed_reasons_17', 'employment_data_id', 'employment_data', 'survey_id', $surveyIds, 'reason_key', 'Reason(s) why not yet employed', self::NOT_EMPLOYED_REASON_LABELS);
         $charts[] = $this->fromChildTable('competencies', 'employment_data_id', 'employment_data', 'survey_id', $surveyIds, 'competency_key', 'Competencies useful in first job', self::COMPETENCY_LABELS);
@@ -124,14 +151,30 @@ class AnalyticsController extends Controller
             $charts[] = $this->jobReasonChart($type, $question, $surveyIds);
         }
 
-        foreach (['undergraduate' => 'Undergraduate', 'graduate' => 'Graduate'] as $level => $levelLabel) {
-            $charts[] = $this->courseReasonChart($level, $levelLabel, $surveyIds);
-        }
-
         return array_values(array_filter($charts, fn ($chart) => count($chart['labels']) > 0));
     }
 
-    private function fromColumn(string $column, string $table, string $foreignKey, $surveyIds, string $question, array $labelMap = []): array
+    private function schoolYearChart($surveyIds): array
+    {
+        $rows = DB::table('graduate_tracer_survey as surveys')
+            ->leftJoin('school_years', 'school_years.id', '=', 'surveys.school_year_id')
+            ->whereIn('surveys.id', $surveyIds)
+            ->select('school_years.label', DB::raw('count(distinct surveys.user_id) as total'))
+            ->groupBy('school_years.label')
+            ->orderByRaw('school_years.label IS NULL')
+            ->orderByDesc('school_years.label')
+            ->get();
+
+        return [
+            'key' => 'graduates_by_school_year',
+            'question' => 'Graduates by School Year',
+            'labels' => $rows->map(fn ($row) => filled($row->label) ? $row->label : 'Not specified')->all(),
+            'counts' => $rows->map(fn ($row) => (int) $row->total)->all(),
+            'section' => 'A',
+        ];
+    }
+
+    private function fromColumn(string $column, string $table, string $foreignKey, $surveyIds, string $question, array $labelMap = [], string $section = 'D'): array
     {
         $rows = DB::table($table)
             ->whereIn($foreignKey, $surveyIds)
@@ -151,7 +194,7 @@ class AnalyticsController extends Controller
             $counts[] = (int) $row->total;
         }
 
-        return ['key' => $table . '_' . $column, 'question' => $question, 'labels' => $labels, 'counts' => $counts];
+        return ['key' => $table . '_' . $column, 'question' => $question, 'labels' => $labels, 'counts' => $counts, 'section' => $section];
     }
 
     private function fromChildTable(string $childTable, string $childForeignKey, string $parentTable, string $parentForeignKey, $surveyIds, string $groupColumn, string $question, array $labelMap): array
@@ -171,7 +214,7 @@ class AnalyticsController extends Controller
             $counts[] = (int) $row->total;
         }
 
-        return ['key' => $childTable . '_' . $groupColumn, 'question' => $question, 'labels' => $labels, 'counts' => $counts];
+        return ['key' => $childTable . '_' . $groupColumn, 'question' => $question, 'labels' => $labels, 'counts' => $counts, 'section' => 'D'];
     }
 
     private function jobReasonChart(string $reasonType, string $question, $surveyIds): array
@@ -192,7 +235,7 @@ class AnalyticsController extends Controller
             $counts[] = (int) $row->total;
         }
 
-        return ['key' => 'job_reasons_' . $reasonType, 'question' => $question, 'labels' => $labels, 'counts' => $counts];
+        return ['key' => 'job_reasons_' . $reasonType, 'question' => $question, 'labels' => $labels, 'counts' => $counts, 'section' => 'D'];
     }
 
     private function courseReasonChart(string $level, string $levelLabel, $surveyIds): array
@@ -212,6 +255,6 @@ class AnalyticsController extends Controller
             $counts[] = (int) $row->total;
         }
 
-        return ['key' => 'course_reasons_' . $level, 'question' => "Reasons for taking the course ({$levelLabel})", 'labels' => $labels, 'counts' => $counts];
+        return ['key' => 'course_reasons_' . $level, 'question' => "Reasons for taking the course ({$levelLabel})", 'labels' => $labels, 'counts' => $counts, 'section' => 'B'];
     }
 }

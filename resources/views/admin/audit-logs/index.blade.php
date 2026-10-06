@@ -3,9 +3,10 @@
 
 @section('content')
 <div class="tracer-wrapper" style="max-width: 900px;">
-    <div class="tracer-header"><h1>Technical Audit Logs</h1></div>
+    <div class="tracer-header"><h1>Audit Logs</h1><p>Review recorded system activity and administrative actions.</p></div>
 
     <div class="tracer-card">
+        <div class="table-responsive" role="region" aria-label="Records" tabindex="0">
         <table class="table table-sm">
             <thead><tr><th>When</th><th>Actor</th><th>Action</th><th>Subject</th><th>Details</th></tr></thead>
             <tbody>
@@ -22,7 +23,10 @@
                 @endforelse
             </tbody>
         </table>
+        </div>
         {{ $logs->links() }}
     </div>
 </div>
+
+@include('partials.auto-refresh', ['seconds' => 120])
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class GraduateTracerSurvey extends Model
 {
@@ -22,6 +23,11 @@ class GraduateTracerSurvey extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function scopeForGraduateUsers(Builder $query): Builder
+    {
+        return $query->whereHas('user', fn (Builder $users) => $users->where('role', 'user'));
     }
 
     public function academicProgram()

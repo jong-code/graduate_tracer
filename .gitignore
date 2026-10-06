@@ -5,6 +5,8 @@
 !.env.example
 .env.backup
 .env.production
+*-LAPTOP-*.env
+*-LAPTOP-*
 .phpactor.json
 .phpunit.result.cache
 /.fleet

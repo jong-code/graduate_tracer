@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Rules\UniqueEncryptedEmail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -16,11 +17,29 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         $validated = $request->validate([
+            'last_name' => ['required', 'string', 'max:255'],
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', 'unique:users,email,' . $request->user()->id],
+            'middle_name' => ['nullable', 'string', 'max:255'],
+            'email' => [
+                'required', 'email',
+                new UniqueEncryptedEmail(ignoreUserId: $request->user()->id),
+            ],
         ]);
 
-        $request->user()->update($validated);
+        $user = $request->user();
+        $emailChanged = strtolower($validated['email']) !== strtolower($user->email);
+
+        $user->update($validated);
+
+        if ($emailChanged) {
+            // User::booted() already reset email_verified_at to null for
+            // us when it saw the email column change - send a fresh link
+            // for the new address so the account doesn't sit permanently
+            // unverified.
+            $user->sendEmailVerificationNotification();
+
+            return back()->with('status', 'Profile updated. Please check your new email address to verify it.');
+        }
 
         return back()->with('status', 'Profile updated.');
     }
@@ -41,25 +60,5 @@ class ProfileController extends Controller
         $request->user()->update(['identity_verified_at' => now()]);
 
         return back()->with('status', 'Identity verified.');
-    }
-
-    public function giveConsent(Request $request)
-    {
-        $request->user()->update([
-            'consent_given' => true,
-            'consent_given_at' => now(),
-        ]);
-
-        return back()->with('status', 'Thank you — consent recorded.');
-    }
-
-    public function withdrawConsent(Request $request)
-    {
-        $request->user()->update([
-            'consent_given' => false,
-            'consent_given_at' => null,
-        ]);
-
-        return back()->with('status', 'Your consent has been withdrawn.');
     }
 }

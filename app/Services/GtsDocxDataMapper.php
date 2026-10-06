@@ -168,17 +168,20 @@ class GtsDocxDataMapper
     {
         $gi = $survey->generalInformation;
         $ed = $survey->employmentData;
+        $address = $gi?->address;
 
         $check = [];
 
         $data = [
             'name' => $gi?->name ?? '',
-            'permanent_address' => $gi?->permanent_address ?? '',
+            // "(permanent_street) (permanent_barangay), (permanent_municipality),
+            // (permanent_province)" per request - see Address::formattedPermanentAddress().
+            'permanent_address' => $address?->formattedPermanentAddress() ?? '',
+            'current_address' => $address?->formattedCurrentAddress() ?? '',
             'email' => $gi?->email ?? '',
             'telephone' => $gi?->telephone ?? '',
             'mobile_number' => $gi?->mobile_number ?? '',
             'birthday' => $gi?->birthday?->format('F j, Y') ?? '',
-            'province' => $gi?->province ?? '',
         ];
 
         // Civil status / sex - the current template prints these as plain
@@ -193,7 +196,20 @@ class GtsDocxDataMapper
         $data['civil_status'] = $civilStatusLabel;
         $data['sex'] = ucfirst($gi?->sex ?? '');
         $data['region_of_origin'] = $gi?->region_of_origin ?? '';
-        $data['residence_city_municipality'] = $gi?->residence_city_municipality ?? '';
+        // "Location of Residence" - answered on the wizard as a City /
+        // Municipality checkbox (general_information.residence_location),
+        // not a free-text place name. The template's {residence_city_municipality}
+        // tag is a single plain-text line ("Location of Residence: ___"),
+        // so this prints the graduate's checked answer directly.
+        $data['residence_city_municipality'] = match ($gi?->residence_location) {
+            'city' => 'City',
+            'municipality' => 'Municipality',
+            default => '',
+        };
+        // Province tag for the template - always the permanent address's
+        // province, regardless of which province (if any) is shown inline
+        // as part of {permanent_address}/{current_address}.
+        $data['province'] = $address?->permanent_province ?? '';
 
         foreach (['single', 'married', 'separated', 'single_parent', 'widow_or_widower'] as $flag) {
             $data['is_' . $flag] = false;
@@ -213,7 +229,8 @@ class GtsDocxDataMapper
             $data[self::REGION_FLAG_MAP[$gi->region_of_origin]] = true;
         }
 
-        // Residence: derived city/municipality flag (see GraduateTracerController::store)
+        // Location of Residence - answered on the wizard as a City /
+        // Municipality checkbox pair (general_information.residence_location).
         $check['residence_city'] = $gi?->residence_location === 'city';
         $check['residence_municipality'] = $gi?->residence_location === 'municipality';
 

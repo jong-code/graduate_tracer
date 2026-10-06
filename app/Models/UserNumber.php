@@ -14,6 +14,7 @@ class UserNumber extends Model
 
     protected $casts = [
         'is_done' => 'boolean',
+        'number' => 'encrypted',
     ];
 
     public function user()

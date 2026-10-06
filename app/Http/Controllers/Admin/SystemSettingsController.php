@@ -8,11 +8,6 @@ use App\Models\GraduateTracerSurvey;
 use App\Services\GtsDocxExportService;
 
 /**
- * Backups is named in the admin role's permission list but needs concrete
- * requirements (destination/schedule) before it can be built for real -
- * stubbed here so the nav and route exist and the rest of the app doesn't
- * have to change shape later.
- *
  * Survey Templates is built out for real: it manages the docxtemplater
  * .docx template used to export a graduate's answers as a filled-in Word
  * document, and lets an admin preview/export any submitted survey with it
@@ -37,17 +32,30 @@ class SystemSettingsController extends Controller
         $templatePath = public_path(self::TEMPLATE_RELATIVE_PATH);
         $exists = is_file($templatePath);
 
-        $users = \App\Models\User::where('role', 'user')
+        $sort = request('sort', 'asc') === 'desc' ? 'desc' : 'asc'; // graduate name A-Z / Z-A
+
+        $usersQuery = \App\Models\User::where('role', 'user')
             ->whereHas('survey', fn ($q) => $q->whereNotNull('submitted_at'))
             ->with('survey.academicProgram')
-            ->orderBy('name')
             ->get();
+
+        // name is encrypted (see User::$casts) - ciphertext sorts
+        // meaninglessly at the DB level, so sort the decrypted collection
+        // in PHP, same approach as UserManagementController@index.
+        $users = $sort === 'desc'
+            ? $usersQuery->sortByDesc(fn ($u) => $u->nameSortKey())->values()
+            : $usersQuery->sortBy(fn ($u) => $u->nameSortKey())->values();
+
+        $search = trim((string) request('search', ''));
+        $users = $users->filter(fn ($u) => $u->matchesNameSearch($search))->values();
 
         return view('admin.templates.index', [
             'templateExists' => $exists,
             'templateUpdatedAt' => $exists ? filemtime($templatePath) : null,
             'templateSizeKb' => $exists ? round(filesize($templatePath) / 1024) : null,
             'users' => $users,
+            'sort' => $sort,
+            'search' => $search,
         ]);
     }
 
@@ -59,10 +67,11 @@ class SystemSettingsController extends Controller
      */
     public function previewSurvey(GraduateTracerSurvey $survey)
     {
+        abort_unless($survey->submitted_at && $survey->user?->isUser(), 404);
         AuditLog::record('survey_content_previewed', $survey);
 
         $survey->load([
-            'generalInformation', 'educationalBackgrounds', 'professionalExams',
+            'generalInformation.address', 'educationalBackgrounds', 'professionalExams',
             'courseReasons', 'trainings', 'employmentData.notEmployedReasons',
             'employmentData.jobReasons', 'employmentData.competencies',
             'otherGraduates', 'academicProgram', 'schoolYear',
@@ -76,18 +85,14 @@ class SystemSettingsController extends Controller
      */
     public function exportSurvey(GraduateTracerSurvey $survey, GtsDocxExportService $exportService)
     {
+        abort_unless($survey->submitted_at && $survey->user?->isUser(), 404);
         AuditLog::record('survey_docx_exported', $survey);
 
         try {
-            $path = $exportService->export($survey);
+            return $exportService->downloadResponse($survey);
         } catch (\RuntimeException $e) {
             return back()->withErrors(['export' => $e->getMessage()]);
         }
-
-        $survey->loadMissing('generalInformation');
-        $safeName = \Illuminate\Support\Str::slug($survey->generalInformation?->name ?? "survey-{$survey->id}");
-
-        return response()->download($path, "gts_{$safeName}.docx")->deleteFileAfterSend(true);
     }
 
     /**
@@ -98,12 +103,32 @@ class SystemSettingsController extends Controller
      */
     public function integrations()
     {
-        $users = \App\Models\User::where('role', 'user')
-            ->with('userNumber')
-            ->orderBy('name')
-            ->get();
+        // name is encrypted (see User::$casts) - same reason
+        // UserManagementController@index paginates manually: ciphertext
+        // sorts meaninglessly at the DB level, so the sort runs in PHP
+        // against the already-decrypted collection, and pagination is
+        // done manually over that sorted collection.
+        $page = (int) request('page', 1);
+        $perPage = 10;
 
-        return view('admin.integrations.index', compact('users'));
+        $sorted = \App\Models\User::where('role', 'user')
+            ->with('userNumber')
+            ->get()
+            ->sortBy(fn ($u) => $u->nameSortKey())
+            ->values();
+
+        $search = trim((string) request('search', ''));
+        $sorted = $sorted->filter(fn ($u) => $u->matchesNameSearch($search))->values();
+
+        $users = new \Illuminate\Pagination\LengthAwarePaginator(
+            $sorted->forPage($page, $perPage),
+            $sorted->count(),
+            $perPage,
+            $page,
+            ['path' => request()->url(), 'query' => request()->query()]
+        );
+
+        return view('admin.integrations.index', compact('users', 'search'));
     }
 
     public function markNumberDone(\App\Models\UserNumber $userNumber)
@@ -111,10 +136,5 @@ class SystemSettingsController extends Controller
         $userNumber->update(['is_done' => true]);
 
         return redirect()->route('admin.integrations')->with('status', 'Marked as done.');
-    }
-
-    public function backups()
-    {
-        return view('admin.stubs.placeholder', ['title' => 'Backups']);
     }
 }

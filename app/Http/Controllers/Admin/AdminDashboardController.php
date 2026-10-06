@@ -16,7 +16,7 @@ class AdminDashboardController extends Controller
             'totalUsers' => User::count(),
             'totalPrograms' => AcademicProgram::count(),
             'totalSchoolYears' => SchoolYear::count(),
-            'totalSurveysSubmitted' => GraduateTracerSurvey::whereNotNull('submitted_at')->count(),
+            'totalSurveysSubmitted' => GraduateTracerSurvey::forGraduateUsers()->whereNotNull('submitted_at')->count(),
             // Deliberately NOT loading survey content/PII here -
             // see SurveyOversightController for the explicitly-authorized path.
         ]);

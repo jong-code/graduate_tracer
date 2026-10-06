@@ -1,21 +1,102 @@
 :root {
-    --tracer-orange: #f0a058;
-    --tracer-orange-dark: #e8934a;
-    --tracer-bg: #fafafa;
-    --tracer-border: #e5e5e5;
-    --tracer-text-muted: #7a7a7a;
+    /* Monochromatic palette built entirely from one hue (28deg, the
+       original brand orange). Two scales share that hue:
+       - the numbered scale (50-900) is full-saturation, for brand/accent
+         elements (buttons, active states, badges, focus rings);
+       - the "neutral" scale is the same hue at very low saturation, used
+         everywhere a plain gray would normally go (page background,
+         borders, body/muted text) so those surfaces read as a warm,
+         desaturated tint of the same orange rather than true gray. */
+    --tracer-50:  hsl(28, 100%, 96%);
+    --tracer-100: hsl(28, 95%, 91%);
+    --tracer-200: hsl(28, 90%, 82%);
+    --tracer-300: hsl(28, 87%, 72%);
+    --tracer-400: hsl(28, 85%, 64%);
+    --tracer-500: hsl(28, 78%, 58%);
+    --tracer-600: hsl(28, 68%, 48%);
+    --tracer-700: hsl(28, 58%, 38%);
+    --tracer-800: hsl(28, 48%, 28%);
+    --tracer-900: hsl(28, 40%, 18%);
+
+    --tracer-neutral-0:   hsl(28, 40%, 99%);
+    --tracer-neutral-50:  hsl(28, 30%, 97%);
+    --tracer-neutral-100: hsl(28, 20%, 93%);
+    --tracer-neutral-200: hsl(28, 14%, 85%);
+    --tracer-neutral-300: hsl(28, 10%, 70%);
+    --tracer-neutral-400: hsl(28, 8%, 55%);
+    --tracer-neutral-600: hsl(28, 10%, 38%);
+    --tracer-neutral-800: hsl(28, 14%, 20%);
+    --tracer-neutral-900: hsl(28, 18%, 12%);
+
+    /* Original variable names kept so nothing else has to change - now
+       backed by the monochromatic scale above instead of standalone hex. */
+    --tracer-orange: var(--tracer-400);
+    --tracer-orange-dark: var(--tracer-500);
+    --tracer-bg: var(--tracer-neutral-50);
+    --tracer-border: var(--tracer-neutral-100);
+    --tracer-text-muted: var(--tracer-neutral-400);
 }
 
 body {
     background-color: var(--tracer-bg);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    color: #1f1f1f;
+    color: var(--tracer-neutral-800);
+    overflow-x: hidden;
+}
+
+.tracer-page {
+    display: block;
+    min-height: calc(100vh - 64px);
+    flex: 1;
+    min-width: 0;
+}
+
+/* Fixed top navbar - pinned to the viewport while the page scrolls.
+   Deliberately `fixed`, not `sticky`: body has `overflow-x: hidden`
+   above, and per the CSS overflow spec that forces overflow-y to compute
+   as `auto` too, turning <body> into its own scroll container instead of
+   the viewport - a well-known way for `position: sticky` to silently stop
+   sticking. `fixed` pins to the viewport regardless, sidestepping that.
+   z-index sits below the mobile sidebar (1045) and its backdrop (1040) so
+   the off-canvas menu still overlays it correctly on small screens. */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1030;
+}
+
+/* Since the navbar is now out of normal flow, push the content below it
+   down by its height - but only on pages that actually have a navbar
+   (authenticated pages). Guest pages (login/register) render
+   .tracer-body directly with no preceding .navbar, so this sibling
+   selector leaves their vertical centering untouched. */
+.navbar + .tracer-body {
+    padding-top: 64px;
+}
+
+.tracer-body {
+    display: flex;
+    align-items: flex-start;
 }
 
 .tracer-wrapper {
     max-width: 760px;
     margin: 0 auto;
     padding: 28px 16px 60px;
+}
+
+/* Vertically centers the login/register forms within the viewport.
+   Scoped to its own class (not .tracer-page/.tracer-wrapper themselves)
+   so ordinary content pages - dashboards, tables, the survey wizard -
+   keep their normal top-aligned flow. */
+.auth-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 40px 0;
 }
 
 .tracer-header h1 {
@@ -34,6 +115,21 @@ body {
     height: 64px;
     object-fit: contain;
     flex-shrink: 0;
+}
+
+/* Login page: logo sits alone above the "Welcome" text (see auth/login.blade.php),
+   so it can be shown larger than the shared .tracer-header-logo size used
+   where a logo sits inline next to text. */
+.tracer-header-logo-lg {
+    width: 110px;
+    height: 110px;
+}
+
+@media (max-width: 575.98px) {
+    .tracer-header-logo-lg {
+        width: 84px;
+        height: 84px;
+    }
 }
 
 @media (max-width: 575.98px) {
@@ -59,19 +155,19 @@ body {
     align-items: center;
     justify-content: center;
     font-weight: 600;
-    background: #ececec;
-    color: #8a8a8a;
+    background: var(--tracer-neutral-100);
+    color: var(--tracer-neutral-400);
     transition: background .2s ease, color .2s ease;
 }
 
 .tracer-step-circle.active {
     background: var(--tracer-orange);
-    color: #fff;
+    color: var(--tracer-neutral-0);
 }
 
 .tracer-step-circle.done {
     background: var(--tracer-orange);
-    color: #fff;
+    color: var(--tracer-neutral-0);
 }
 
 .tracer-step-circle.clickable {
@@ -81,7 +177,7 @@ body {
 .tracer-step-circle.clickable:hover,
 .tracer-step-circle.clickable:focus-visible {
     background: var(--tracer-orange-dark);
-    color: #fff;
+    color: var(--tracer-neutral-0);
     outline: none;
     box-shadow: 0 0 0 3px rgba(240, 160, 88, 0.35);
 }
@@ -93,7 +189,7 @@ body {
 .tracer-step-line {
     flex: 1;
     height: 3px;
-    background: #e0e0e0;
+    background: var(--tracer-neutral-200);
     margin: 0 8px;
     border-radius: 2px;
 }
@@ -104,7 +200,7 @@ body {
 
 /* Card */
 .tracer-card {
-    background: #fff;
+    background: var(--tracer-neutral-0);
     border: 1px solid var(--tracer-border);
     border-radius: 16px;
     padding: 28px 24px;
@@ -123,6 +219,237 @@ body {
 
 .tracer-section { display: none; }
 .tracer-section.active { display: block; }
+
+/* ============================================================
+   Dashboard-widget theme - same visual language introduced on the
+   Analytics page (elevated rounded cards, gradient pill buttons,
+   segmented tabs, subtle entrance/hover motion).
+
+   Scoped under .admin-page and .user-page, added only to the
+   dashboard wrapper divs that opt in (see resources/views/admin/*
+   and resources/views/user/dashboard.blade.php). The survey wizard,
+   auth screens, and faculty view keep using the plain .tracer-card /
+   .btn-tracer-* look defined above - untouched.
+   ============================================================ */
+
+.admin-page .tracer-card,
+.user-page .tracer-card {
+    border-radius: 20px;
+    border-color: rgba(20, 10, 0, .04);
+    box-shadow: 0 1px 2px rgba(20, 10, 0, .03), 0 12px 26px -20px rgba(20, 10, 0, .4);
+    animation: adminCardIn .45s cubic-bezier(.22, 1, .36, 1) both;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.admin-page .tracer-card:hover,
+.user-page .tracer-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(20, 10, 0, .05), 0 20px 34px -18px rgba(20, 10, 0, .45);
+}
+
+/* Opt out of the hover lift for cards with their own drag/zoom/scroll
+   interaction (the Leaflet map) or ones already inside a hovering
+   context, where "floating" on hover would feel wrong. */
+.admin-page .tracer-card.no-hover-lift:hover,
+.user-page .tracer-card.no-hover-lift:hover {
+    transform: none;
+    box-shadow: 0 1px 2px rgba(20, 10, 0, .03), 0 12px 26px -20px rgba(20, 10, 0, .4);
+}
+
+@keyframes adminCardIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Stagger cards stacked on the same page, same technique as Analytics'
+   chart grid - each one starts a touch later than the one before it. */
+.admin-page .tracer-card:nth-of-type(1),
+.user-page .tracer-card:nth-of-type(1) { animation-delay: 0s; }
+.admin-page .tracer-card:nth-of-type(2),
+.user-page .tracer-card:nth-of-type(2) { animation-delay: .05s; }
+.admin-page .tracer-card:nth-of-type(3),
+.user-page .tracer-card:nth-of-type(3) { animation-delay: .10s; }
+.admin-page .tracer-card:nth-of-type(4),
+.user-page .tracer-card:nth-of-type(4) { animation-delay: .15s; }
+.admin-page .tracer-card:nth-of-type(5),
+.user-page .tracer-card:nth-of-type(5) { animation-delay: .20s; }
+.admin-page .tracer-card:nth-of-type(6),
+.user-page .tracer-card:nth-of-type(6) { animation-delay: .25s; }
+
+.admin-page .btn-tracer-submit,
+.admin-page .btn-tracer-next,
+.user-page .btn-tracer-submit,
+.user-page .btn-tracer-next {
+    background: linear-gradient(135deg, var(--tracer-400), var(--tracer-600));
+    box-shadow: 0 10px 20px -10px rgba(120, 70, 20, .5);
+    transition: filter .15s ease, transform .15s ease;
+}
+
+.admin-page .btn-tracer-submit:hover,
+.admin-page .btn-tracer-next:hover,
+.user-page .btn-tracer-submit:hover,
+.user-page .btn-tracer-next:hover {
+    filter: brightness(1.05);
+    transform: translateY(-1px);
+    color: var(--tracer-neutral-0);
+}
+
+.admin-page .btn-tracer-prev,
+.user-page .btn-tracer-prev {
+    transition: background-color .15s ease, transform .15s ease;
+}
+
+.admin-page .btn-tracer-prev:hover,
+.user-page .btn-tracer-prev:hover {
+    background: var(--tracer-neutral-100);
+    transform: translateY(-1px);
+}
+
+/* Round out Bootstrap's small outline buttons (Preview/Edit/Delete/Clear
+   filters, etc.) and the paginator to match the pill language everywhere
+   else, without touching Bootstrap's own color classes. */
+.admin-page .btn-sm,
+.user-page .btn-sm {
+    border-radius: 999px;
+    font-weight: 600;
+}
+
+.admin-page .badge,
+.user-page .badge {
+    border-radius: 999px;
+    font-weight: 600;
+    padding: 5px 10px;
+}
+
+.admin-page .pagination .page-link,
+.user-page .pagination .page-link {
+    border-radius: 999px;
+    margin: 0 2px;
+    color: var(--tracer-neutral-600);
+    border-color: transparent;
+}
+
+.admin-page .pagination .page-item.active .page-link,
+.user-page .pagination .page-item.active .page-link {
+    background: linear-gradient(135deg, var(--tracer-400), var(--tracer-600));
+    border-color: transparent;
+}
+
+/* ---- KPI stat card (e.g. dashboard totals) ---- */
+.admin-stat-value {
+    font-size: 1.9rem;
+    font-weight: 800;
+    color: var(--tracer-neutral-800);
+    line-height: 1;
+}
+
+.admin-stat-label {
+    font-size: .78rem;
+    color: var(--tracer-neutral-400);
+}
+
+/* ---- Quick-link cards (dashboard "Configuration" grid) ---- */
+.admin-quicklink-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 12px;
+}
+
+.admin-quicklink {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: 16px;
+    background: var(--tracer-neutral-0);
+    border: 1px solid rgba(20, 10, 0, .04);
+    color: var(--tracer-neutral-800);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: .88rem;
+    box-shadow: 0 1px 2px rgba(20, 10, 0, .03);
+    animation: adminCardIn .45s cubic-bezier(.22, 1, .36, 1) both;
+    transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease;
+}
+
+.admin-quicklink-grid .admin-quicklink:nth-child(1) { animation-delay: 0s; }
+.admin-quicklink-grid .admin-quicklink:nth-child(2) { animation-delay: .04s; }
+.admin-quicklink-grid .admin-quicklink:nth-child(3) { animation-delay: .08s; }
+.admin-quicklink-grid .admin-quicklink:nth-child(4) { animation-delay: .12s; }
+.admin-quicklink-grid .admin-quicklink:nth-child(5) { animation-delay: .16s; }
+.admin-quicklink-grid .admin-quicklink:nth-child(6) { animation-delay: .20s; }
+.admin-quicklink-grid .admin-quicklink:nth-child(7) { animation-delay: .24s; }
+.admin-quicklink-grid .admin-quicklink:nth-child(8) { animation-delay: .28s; }
+
+.admin-quicklink:hover {
+    color: var(--tracer-neutral-800);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 26px -16px rgba(20, 10, 0, .45);
+    background: var(--tracer-50);
+}
+
+.admin-quicklink-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, var(--tracer-100), var(--tracer-200));
+    color: var(--tracer-orange-dark);
+}
+
+.admin-quicklink-icon svg.nav-icon-svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* ---- Segmented control (filter/sort toggles, same component as the
+   Analytics section tabs) ---- */
+.admin-segmented {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 3px;
+    background: var(--tracer-neutral-100);
+    padding: 4px;
+    border-radius: 999px;
+}
+
+.admin-segmented a,
+.admin-segmented button {
+    border: none;
+    background: transparent;
+    padding: 7px 15px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: .8rem;
+    color: var(--tracer-neutral-600);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color .15s ease, color .15s ease, box-shadow .15s ease;
+}
+
+.admin-segmented a.active,
+.admin-segmented button.active {
+    background: var(--tracer-neutral-0);
+    color: var(--tracer-orange-dark);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .05), 0 6px 14px -8px rgba(0, 0, 0, .3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .admin-page .tracer-card,
+    .user-page .tracer-card,
+    .admin-quicklink {
+        animation: none !important;
+    }
+
+    .admin-page .tracer-card:hover,
+    .user-page .tracer-card:hover,
+    .admin-quicklink:hover {
+        transform: none;
+    }
+}
 
 .form-label {
     font-weight: 600;
@@ -178,7 +505,7 @@ body {
 .tracer-add-row {
     border: 1px dashed var(--tracer-orange);
     color: var(--tracer-orange-dark);
-    background: #fff7ef;
+    background: var(--tracer-50);
     border-radius: 10px;
     padding: 8px 14px;
     font-weight: 600;
@@ -193,8 +520,8 @@ body {
 
 .btn-tracer-prev {
     border: 1px solid var(--tracer-border);
-    background: #fff;
-    color: #444;
+    background: var(--tracer-neutral-0);
+    color: var(--tracer-neutral-600);
     border-radius: 999px;
     padding: 10px 22px;
     font-weight: 600;
@@ -203,7 +530,7 @@ body {
 .btn-tracer-next, .btn-tracer-submit {
     background: var(--tracer-orange);
     border: none;
-    color: #fff;
+    color: var(--tracer-neutral-0);
     border-radius: 999px;
     padding: 10px 24px;
     font-weight: 600;
@@ -211,18 +538,105 @@ body {
 
 .btn-tracer-next:hover, .btn-tracer-submit:hover {
     background: var(--tracer-orange-dark);
-    color: #fff;
+    color: var(--tracer-neutral-0);
 }
 
 .tracer-conditional { display: none; }
 .tracer-conditional.show { display: block; }
+
+/* Self-employed skills searchable combobox (Section D) */
+.tracer-skill-row {
+    border: 1px solid var(--tracer-border);
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.skill-row-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.tracer-skill-remove {
+    border: none;
+    background: transparent;
+    color: #c0453a;
+    font-weight: 700;
+    font-size: 1.1rem;
+    line-height: 1;
+    padding: 0 4px;
+    transition: color .15s ease, transform .15s ease;
+}
+
+.tracer-skill-remove:hover {
+    color: #8f2f27;
+    transform: scale(1.15);
+}
+
+.skill-search-wrap {
+    position: relative;
+}
+
+.skill-suggestions {
+    position: absolute;
+    z-index: 20;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: 260px;
+    overflow-y: auto;
+    background: var(--tracer-neutral-0);
+    border: 1px solid var(--tracer-border);
+    border-radius: 10px;
+    margin: 4px 0 0;
+    padding: 4px 0;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+    list-style: none;
+}
+
+.skill-suggestions .skill-option {
+    padding: 8px 12px;
+    cursor: pointer;
+    border-left: 3px solid transparent;
+    transition: background-color .15s ease, border-color .15s ease, padding-left .15s ease;
+}
+
+.skill-suggestions .skill-option:hover,
+.skill-suggestions .skill-option.active {
+    background: var(--tracer-50);
+    border-left-color: var(--tracer-orange-dark);
+    padding-left: 15px;
+}
+
+.skill-suggestions .skill-option-name {
+    display: block;
+    color: var(--tracer-neutral-800);
+}
+
+.skill-suggestions .skill-option-category {
+    display: block;
+    font-size: .78rem;
+    color: var(--tracer-text-muted);
+}
+
+.skill-suggestions .skill-empty {
+    padding: 10px 12px;
+    color: var(--tracer-text-muted);
+    font-size: .88rem;
+}
+
+.skill-inline-message { color: #c0453a; }
 
 /* Bigger, higher-contrast checkboxes and radios */
 .form-check-input {
     width: 1.25em;
     height: 1.25em;
     margin-top: 0.15em;
-    border: 2px solid #b0aca3;
+    border: 2px solid var(--tracer-neutral-300);
     box-shadow: none;
 }
 
@@ -268,12 +682,12 @@ body {
 
 .nav-pill-link:hover {
     background-color: var(--tracer-orange);
-    color: #fff;
+    color: var(--tracer-neutral-0);
 }
 
 .nav-pill-link.active {
     background-color: var(--tracer-orange);
-    color: #fff;
+    color: var(--tracer-neutral-0);
 }
 
 .nav-icon {
@@ -288,29 +702,74 @@ body {
     flex-shrink: 0;
 }
 
+/* Guarantee the logout button is always on-screen: if the pills, account
+   label/badge, and logout button don't all fit on one line (regardless of
+   how many nav items a given role has), wrap onto a second line instead of
+   letting the row overflow past the viewport edge and clip the button. */
+.nav-actions {
+    flex-wrap: wrap;
+    row-gap: 8px;
+}
+
 .nav-logout-btn {
-    border-color: #adb5bd;
-    color: #495057;
+    border-color: var(--tracer-neutral-300);
+    color: var(--tracer-neutral-600);
 }
 
 .nav-logout-btn:hover {
-    background-color: #adb5bd;
-    color: #fff;
+    background-color: var(--tracer-neutral-300);
+    color: var(--tracer-neutral-0);
+}
+
+/* Initials badge - hidden by default (desktop shows the full "Name (Role)"
+   text); swapped in at tablet/mobile widths below so the nav-user-label
+   never grows wide enough to push the logout button out of view. */
+.nav-user-initials {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: var(--tracer-orange);
+    color: var(--tracer-neutral-0);
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: .02em;
+    flex-shrink: 0;
+    cursor: default;
+}
+
+/* Tablet and mobile (below Bootstrap's lg breakpoint, matching this nav's
+   navbar-expand-lg): swap the full "Name (Role)" text for an initials
+   badge - e.g. "John Doe (Admin)" becomes "JD" - instead of hiding it
+   outright, so there's still an at-a-glance account indicator while
+   guaranteeing the logout button has room and never disappears. */
+@media (max-width: 991.98px) {
+    .nav-user-full {
+        display: none;
+    }
+
+    .nav-user-initials {
+        display: inline-flex;
+    }
 }
 
 /* Mobile: shrink the nav to icon-only buttons so it stays usable on
-   small screens - text labels and the "name (role)" line are hidden,
-   the pill becomes a compact circular icon button. */
+   small screens - text labels are hidden, the pill becomes a compact
+   circular icon button. Scoped to .navbar specifically: at this width the
+   admin's Dashboard/Users/Programs/School Years/Audit Logs pills and the
+   name+logout section have already been moved into the sidebar (see the
+   script in layouts/app.blade.php), so this rule no longer applies to
+   them there - they keep their full text label, matching the sidebar's
+   other links (Analytics, Survey Templates, Integrations, View Map). It
+   still applies to user/faculty roles, who have no sidebar to move into. */
 @media (max-width: 767.98px) {
-    .nav-label {
+    .navbar .nav-label {
         display: none;
     }
 
-    .nav-user-label {
-        display: none;
-    }
-
-    .nav-pill-link:has(.nav-icon) {
+    .navbar .nav-pill-link:has(.nav-icon) {
         padding: 8px;
         width: 38px;
         height: 38px;
@@ -333,4 +792,566 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-weight: 600;
     border-bottom: 2px solid var(--tracer-orange);
+}
+
+/* Auto-refresh indicator (partials/auto-refresh.blade.php) - deliberately
+   small and out of the way in the corner, not a banner, since it's a
+   passive status readout rather than something that needs attention. */
+.auto-refresh-indicator {
+    position: fixed;
+    right: 14px;
+    bottom: 14px;
+    z-index: 1040;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--tracer-neutral-0);
+    border: 1px solid var(--tracer-border);
+    border-radius: 999px;
+    padding: 6px 8px 6px 14px;
+    font-size: .78rem;
+    color: var(--tracer-text-muted);
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+}
+
+.auto-refresh-toggle-btn {
+    border: 1px solid var(--tracer-border);
+    background: var(--tracer-bg);
+    color: var(--tracer-neutral-800);
+    border-radius: 999px;
+    font-size: .72rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    cursor: pointer;
+}
+
+.auto-refresh-toggle-btn:hover {
+    border-color: var(--tracer-orange);
+    color: var(--tracer-orange-dark);
+}
+
+@media (max-width: 575.98px) {
+    .auto-refresh-indicator {
+        left: 14px;
+        right: 14px;
+        justify-content: space-between;
+    }
+}
+
+/* Admin sidebar (partials/admin-sidebar.blade.php) - Analytics, Survey
+   Templates, Integrations, View Map, plus (on mobile/tablet only) the
+   Dashboard/Users/Programs/School Years/Audit Logs pills and the
+   name+logout section, moved in from the top navbar. Desktop: fixed to
+   the viewport below the navbar (see the .navbar comment above for why
+   `fixed` rather than `sticky`), with .tracer-page's margin-left below
+   reserving its width since it's no longer part of the flex flow.
+   Mobile: an off-canvas panel, hidden by default and toggled via the
+   hamburger icon button next to the "Graduate Tracer" brand - see the
+   media query below and the script in layouts/app.blade.php. */
+.tracer-sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 220px;
+    flex-shrink: 0;
+    background: var(--tracer-neutral-0);
+    border-right: 1px solid var(--tracer-border);
+    position: fixed;
+    top: 64px;
+    left: 0;
+    height: calc(100vh - 64px);
+    overflow-y: auto;
+    padding: 16px 0;
+    z-index: 1020;
+}
+
+/* Reserve the sidebar's width in the main content on desktop only - on
+   mobile the sidebar is off-canvas (hidden by default, see the media
+   query below), so the content there should stay full-width. Scoped via
+   the sibling selector so it only applies on admin pages that actually
+   render a sidebar. */
+@media (min-width: 992px) {
+    .tracer-sidebar + .tracer-page {
+        margin-left: 220px;
+    }
+}
+
+.tracer-sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px 12px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--tracer-border);
+    font-weight: 700;
+    color: var(--tracer-neutral-800);
+}
+
+.tracer-sidebar-close {
+    border: none;
+    background: none;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--tracer-text-muted);
+    cursor: pointer;
+    padding: 0 4px;
+}
+
+.tracer-sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    color: var(--tracer-neutral-600);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: .9rem;
+    border-left: 3px solid transparent;
+}
+
+.tracer-sidebar-link:hover {
+    background-color: var(--tracer-bg);
+    color: var(--tracer-orange-dark);
+}
+
+.tracer-sidebar-link.active {
+    background-color: var(--tracer-bg);
+    border-left-color: var(--tracer-orange);
+    color: var(--tracer-orange-dark);
+}
+
+.tracer-sidebar-slot:empty {
+    display: none;
+}
+
+/* #navAdminLinks, once moved in here, is a plain flex row of pill-shaped
+   .nav-pill-link buttons (built for a horizontal navbar) - restyle them
+   to look like native, full-width .tracer-sidebar-link rows instead. */
+#sidebarPrimaryLinksSlot {
+    border-bottom: 1px solid var(--tracer-border);
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+}
+
+#sidebarPrimaryLinksSlot #navAdminLinks {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    gap: 0;
+}
+
+#sidebarPrimaryLinksSlot .nav-pill-link {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    border-left: 3px solid transparent;
+    padding: 10px 16px;
+    color: var(--tracer-neutral-600);
+    font-weight: 600;
+    font-size: .9rem;
+    background: none;
+}
+
+#sidebarPrimaryLinksSlot .nav-pill-link:hover,
+#sidebarPrimaryLinksSlot .nav-pill-link.active {
+    background-color: var(--tracer-bg);
+    color: var(--tracer-orange-dark);
+    border-left-color: var(--tracer-orange);
+}
+
+/* #navAccountSection (name badge + logout form), once moved in here, is
+   pinned to the very bottom of the sidebar via margin-top: auto,
+   regardless of how many links are above it. */
+.tracer-sidebar-account {
+    margin-top: auto;
+    border-top: 1px solid var(--tracer-border);
+    padding: 12px 16px;
+}
+
+.tracer-sidebar-account #navAccountSection {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+}
+
+/* Plenty of room in the sidebar, unlike the cramped navbar - show the
+   full name instead of the initials-only badge the navbar falls back to
+   at this same breakpoint (see the .nav-user-full/.nav-user-initials
+   rules above). */
+.tracer-sidebar-account .nav-user-full {
+    display: inline-block !important;
+    font-weight: 600;
+    color: var(--tracer-neutral-800);
+}
+
+.tracer-sidebar-account .nav-user-initials {
+    display: none !important;
+}
+
+.tracer-sidebar-account .nav-logout-btn {
+    justify-content: flex-start;
+}
+
+.sidebar-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    padding: 4px;
+    margin-right: 10px;
+    color: var(--tracer-orange, #f0a058);
+    cursor: pointer;
+}
+
+.sidebar-backdrop {
+    display: none;
+}
+
+@media (max-width: 991.98px) {
+    .tracer-sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        /* Fixed 220px is fine on tablets, but on narrow phones (<360px)
+           it can run close to the full screen width with no visible
+           backdrop margin - cap it relative to the viewport instead. */
+        max-width: 82vw;
+        z-index: 1045;
+        transform: translateX(-100%);
+        transition: transform .25s ease;
+        box-shadow: 4px 0 16px rgba(0,0,0,.15);
+        overflow-y: auto;
+    }
+
+    .tracer-sidebar.sidebar-open {
+        transform: translateX(0);
+    }
+
+    .tracer-sidebar-header {
+        padding-top: 4px;
+    }
+
+    .sidebar-backdrop.sidebar-open {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, .35);
+        z-index: 1040;
+    }
+}
+
+/* Table overflow fix: on narrow (mobile/tablet) screens, wide admin
+   tables (Manage Users, Survey Templates, etc.) no longer squeeze their
+   columns/buttons until they overlap or spill outside the .tracer-card -
+   the .table-responsive wrapper (added around every <table> in the admin
+   views) scrolls the table horizontally within the card instead, and the
+   rules below keep action buttons and status/role badges on one line so
+   they scroll cleanly rather than wrapping mid-cell. */
+.table-responsive {
+    -webkit-overflow-scrolling: touch;
+}
+
+.table-responsive .table {
+    margin-bottom: 0;
+}
+
+.table-responsive .table td,
+.table-responsive .table th {
+    white-space: nowrap;
+}
+
+@media (max-width: 767.98px) {
+    /* Table cells hold free-flowing text (names, emails) as well as
+       action buttons/badges - only the latter need to stay on one line
+       once we allow the former to wrap on narrow screens. */
+    .table-responsive .table td,
+    .table-responsive .table th {
+        white-space: normal;
+    }
+
+    .table-responsive .table td:has(.btn) {
+        white-space: nowrap;
+    }
+}
+
+
+/* checked - values are still copied in and still submit normally (no
+   `disabled` attribute, which would drop them from the POST body), this
+   just visually signals + mouse-blocks direct editing while it's synced. */
+.tracer-fields-locked {
+    opacity: .6;
+    pointer-events: none;
+}
+
+/* Audit Logs table: the generic `.table-responsive .table td { white-space:
+   nowrap }` rule above is right for most admin tables (names, emails,
+   short badges), but the Details/Subject columns here can hold multiple
+   lines of key/value pairs - those need to wrap even on wide screens,
+   or a single log entry with a few meta fields blows the row out
+   sideways. */
+.audit-log-table td {
+    vertical-align: top;
+}
+
+.audit-log-table td:nth-child(4),
+.audit-log-table td:nth-child(5) {
+    white-space: normal;
+    max-width: 320px;
+}
+
+.audit-log-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.audit-log-meta > div {
+    display: flex;
+    gap: 4px;
+}
+
+.audit-log-meta dt {
+    font-weight: 600;
+    color: var(--tracer-neutral-600);
+    white-space: nowrap;
+}
+
+.audit-log-meta dd {
+    margin: 0;
+    word-break: break-word;
+}
+
+/* Shared reference design: cream surfaces, navy text and orange accents. */
+:root {
+    --tracer-neutral-0: #fff;
+    --tracer-neutral-50: #faf8f6;
+    --tracer-neutral-100: #f0eeec;
+    --tracer-neutral-200: #dce0e8;
+    --tracer-neutral-300: #a1a9b8;
+    --tracer-neutral-400: #6e7a90;
+    --tracer-neutral-600: #4a5870;
+    --tracer-neutral-800: #202b40;
+    --tracer-neutral-900: #101b32;
+    --tracer-400: #ff913f;
+    --tracer-500: #f8791e;
+    --tracer-600: #d75b08;
+    --tracer-orange: #ff781a;
+    --tracer-orange-dark: #c95000;
+    --tracer-text-muted: #6e7a90;
+    --tracer-border: #eeedf0;
+}
+h1, h2, h3, h4 { color: var(--tracer-neutral-900); }
+.navbar { min-height: 64px; box-shadow: 0 1px 8px #202b4005; }
+.navbar-brand, .auth-brand { color: var(--tracer-orange-dark); display: inline-flex; align-items: center; gap: 10px; }
+.brand-mark, .auth-brand-mark { display: inline-flex; width: 36px; height: 36px; color: var(--tracer-orange); }
+.brand-mark svg, .auth-brand-mark svg { width: 100%; height: 100%; }
+.nav-icon { display: inline-flex; width: 21px; height: 21px; flex-shrink: 0; }
+.nav-icon svg { width: 100%; height: 100%; }
+.nav-pill-link { display: inline-flex; align-items: center; gap: 8px; }
+.nav-pill-link.active { background: linear-gradient(115deg, #e87824, #ff9639); color: white; }
+.skip-link { position: fixed; top: -80px; left: 16px; z-index: 2000; background: white; padding: 12px; border: 2px solid var(--tracer-orange); }
+.skip-link:focus { top: 8px; }
+:focus-visible { outline: 3px solid #e87824; outline-offset: 3px; }
+.tracer-sidebar { width: 244px; min-width: 244px; background: #fff; border-right: 1px solid var(--tracer-border); }
+.staff-sidebar-label { margin: 18px 20px 10px; font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: #6e7a90; }
+.staff-sidebar-label:not(:first-of-type) { padding-top: 20px; border-top: 1px solid var(--tracer-border); }
+.tracer-sidebar-link { padding: 12px 22px; margin: 2px 12px 2px 0; font-weight: 500; border-radius: 0 9px 9px 0; }
+.tracer-sidebar-link.active { background: linear-gradient(90deg, #fff0e4, #fdf6f0); color: #c95000; border-color: #ff781a; }
+.sidebar-purpose { margin: 30px 20px 20px; padding: 24px 18px 36px; text-align: center; border-radius: 15px; background: radial-gradient(ellipse at 0 120%, #ffcc9d 0 40%, transparent 41%), radial-gradient(ellipse at 110% 110%, #ffe0c0 0 50%, transparent 51%), #fff6ed; }
+.sidebar-purpose-mark { width: 68px; height: 68px; display: block; margin: 0 auto 12px; color: #ff781a; }
+.sidebar-purpose-mark svg { width: 100%; height: 100%; }
+.sidebar-purpose strong { display: block; color: #101b32; line-height: 1.3; }
+.sidebar-purpose p { font-size: .85rem; margin: 10px 0 0; color: #4a5870; }
+.role-admin .tracer-wrapper, .role-faculty .tracer-wrapper { width: 100%; max-width: 1500px !important; padding: 36px clamp(18px, 3vw, 52px) 48px; }
+.tracer-header { gap: 18px; margin-bottom: 24px; flex-wrap: wrap; }
+.tracer-header h1, .faculty-page-header h1 { font-size: clamp(1.65rem, 2.4vw, 2.25rem); font-weight: 750; letter-spacing: -.035em; }
+.tracer-header p { margin-bottom: 0; }
+.tracer-card, .faculty-report-card, .faculty-stat, .workspace-metric, .faculty-tool-card, .workspace-shortcut { background: white; border: 1px solid var(--tracer-border); border-radius: 16px; box-shadow: 0 5px 20px #202b4006; }
+.tracer-card { padding: 24px; }
+.btn-tracer-submit, .btn-tracer-next, .faculty-primary-action { background: linear-gradient(110deg, #e97825, #ff9639); color: white; border: 0; border-radius: 12px; padding: 12px 22px; font-weight: 650; box-shadow: 0 5px 12px #b65a181c; }
+.btn-tracer-submit:hover, .btn-tracer-next:hover, .faculty-primary-action:hover { background: #c95000; color: white; }
+.form-control, .form-select { border-color: #dce0e8; border-radius: 9px; color: #202b40; min-height: 42px; }
+.form-control:focus, .form-select:focus { border-color: #f8791e; box-shadow: 0 0 0 3px #ff781a18; }
+.form-label { font-size: .875rem; font-weight: 600; }
+.table { --bs-table-bg: transparent; --bs-table-color: #202b40; --bs-table-border-color: #eef0f4; font-size: .875rem; }
+.table th { padding: 12px 14px; color: #101b32; background: #fbf6f1; font-weight: 650; }
+.table td { padding: 11px 14px; }
+.table tbody tr:hover { background: #fffaf5; }
+.badge { border-radius: 99px; padding: 7px 12px; font-weight: 550; }
+.badge.bg-success { background: #e5faef !important; color: #087845; }
+.badge.bg-secondary { background: #edf0f5 !important; color: #4a5870; }
+.badge.bg-warning { background: #fff5df !important; color: #966000 !important; }
+.pagination { margin: 20px 0 0; gap: 6px; }
+.pagination .page-link { border-radius: 9px !important; color: #4a5870; border-color: #e5e8ef; }
+.pagination .active .page-link { background: #e5650c; color: white; border-color: #e5650c; }
+.page-footer { padding: 20px; color: #6e7a90; font-size: .78rem; text-align: center; }
+.name-filter { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.name-filter-input { position: relative; flex: 2 1 260px; }
+.name-filter-input > span { position: absolute; top: 8px; left: 14px; font-size: 22px; color: #6e7a90; }
+.name-filter-input input { padding-left: 42px; }
+.name-filter .form-select { flex: 1 1 145px; width: auto; }
+.search-status { flex-basis: 100%; font-size: .8rem; color: #6e7a90; }
+.search-status:empty { display: none; }
+.table-swipe-hint { display: none; }
+.workspace-metrics, .faculty-kpi-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-bottom: 28px; }
+.workspace-metric, .faculty-stat { padding: 22px; text-decoration: none; color: #4a5870; }
+.workspace-metric strong, .faculty-stat strong { display: block; font-size: 2rem; color: #101b32; margin: 6px 0; }
+.workspace-metric small, .faculty-stat p { color: #6e7a90; font-size: .8rem; margin: 0; }
+.workspace-metric > span, .faculty-stat-label { font-size: .85rem; }
+.workspace-shortcuts, .faculty-tools-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.workspace-shortcut, .faculty-tool-card { padding: 22px; text-decoration: none; color: #202b40; transition: border-color .15s; }
+.workspace-shortcut:hover, .faculty-tool-card:hover, .workspace-metric:hover { border-color: #ffbc85; color: #202b40; }
+.workspace-shortcut > .nav-icon, .faculty-tool-icon { display: flex; width: 44px; height: 44px; padding: 10px; border-radius: 12px; background: #fff1e6; color: #e5650c; margin-bottom: 16px; }
+.faculty-tool-icon svg { width: 100%; height: 100%; }
+.workspace-shortcut p, .faculty-tool-card p { margin: 8px 0 0; font-size: .85rem; color: #6e7a90; line-height: 1.5; }
+.faculty-page-header { display: flex; justify-content: space-between; gap: 20px; align-items: center; margin-bottom: 20px; flex-wrap: wrap; }
+.faculty-eyebrow, .workspace-eyebrow { color: #6e7a90; font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 8px; }
+.faculty-intro { margin: 8px 0 0; color: #6e7a90; }
+.faculty-scope-note { font-size: .85rem; color: #6e7a90; margin-bottom: 24px; }
+.faculty-kpi-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.faculty-tools-section { margin-bottom: 28px; }
+.faculty-tools-section h2, .faculty-report-card h2 { font-size: 1.1rem; font-weight: 700; }
+.faculty-tool-card { position: relative; }
+.faculty-tool-card h3 { font-size: 1rem; font-weight: 650; }
+.faculty-tool-arrow { position: absolute; top: 24px; right: 22px; color: #c95000; }
+.faculty-report-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 20px; }
+.faculty-report-card { padding: 24px; }
+.faculty-report-heading { display: flex; justify-content: space-between; gap: 16px; }
+.faculty-report-heading > span, .faculty-report-description, .faculty-report-footer { color: #6e7a90; font-size: .85rem; }
+.faculty-report-stack { display: grid; gap: 20px; }
+.faculty-breakdown-row { margin-top: 20px; }
+.faculty-breakdown-label { display: flex; justify-content: space-between; gap: 20px; font-size: .875rem; margin-bottom: 8px; }
+.faculty-breakdown-label small { color: #6e7a90; font-weight: 400; }
+.faculty-progress { height: 10px; background: #f0eeec; border-radius: 99px; overflow: hidden; }
+.faculty-progress span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #ff9639, #ffb179); }
+.faculty-empty-state { padding: 28px 0; color: #6e7a90; }
+.faculty-relevance-grid { display: flex; gap: 36px; }
+.faculty-relevance-grid strong { display: block; font-size: 1.8rem; }
+.faculty-report-footer { margin-top: 20px; }
+.auth-center { gap: clamp(30px, 6vw, 120px); padding: 48px 30px; min-height: 100vh; background: radial-gradient(ellipse at 100% 0, #fff0e3, transparent 40%), #faf8f6; }
+.auth-center > .tracer-wrapper { background: white; border: 1px solid #f0eeec; border-radius: 24px; box-shadow: 0 12px 45px #5733140c; margin: 0; padding: 30px; width: 100%; max-width: 520px !important; }
+.auth-center .tracer-card { border: 0; box-shadow: none; padding: 20px 0 0; }
+.auth-brand { text-decoration: none; font-size: 1.1rem; font-weight: 700; margin-bottom: 24px; }
+.auth-panel { width: clamp(280px, 32vw, 480px); padding: 30px; flex-shrink: 0; color: #4a5870; }
+.auth-panel-logo { width: 112px; height: 112px; object-fit: contain; display: block; margin: 0 auto 18px; }
+.auth-panel h2 { text-align: center; font-size: 1.8rem; font-weight: 750; }
+.auth-panel h2 span { display: block; font-size: .9rem; letter-spacing: .3em; text-transform: uppercase; margin-top: 6px; }
+.auth-panel > p:not(.auth-panel-quote) { text-align: center; margin: 28px 0; font-size: 1.1rem; }
+.auth-panel-feature { display: flex; gap: 16px; align-items: center; margin: 24px 0; }
+.auth-panel-feature > span { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; background: #ffe9d5; color: #c95000; }
+.auth-panel-feature strong { color: #202b40; }
+.auth-panel-feature p { margin: 3px 0 0; }
+.auth-panel-quote { padding: 26px; border-radius: 18px 18px 70px 18px; background: linear-gradient(120deg, #e87824, #ffad61); color: white; font-style: italic; margin-top: 40px; }
+.auth-helper { color: #6e7a90; font-size: .8rem; text-align: center; margin-top: 20px; }
+.auth-center .btn-tracer-submit { border-radius: 99px; }
+.page-register .auth-center > .tracer-wrapper { max-width: 700px !important; }
+#registerForm { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 24px; }
+#registerForm > div:has([name="middle_name"]), #registerForm > div:has([name="email"]), #registerForm > .row, #registerForm > hr, #registerForm > button { grid-column: 1 / -1; }
+#registerForm .form-select { width: 100% !important; }
+.profile-workspace { display: grid; grid-template-columns: 280px minmax(0, 1fr); max-width: 1240px; gap: 32px; margin: 36px auto; padding: 0 24px; align-items: start; }
+.profile-workspace > .tracer-wrapper { width: 100%; max-width: none; padding: 0; }
+.profile-summary { border: 1px solid #eeedf0; border-radius: 18px; background: linear-gradient(165deg, #ffd4a3 0, #ffb266 135px, white 136px); padding: 70px 24px 24px; text-align: center; }
+.profile-avatar { height: 106px; width: 106px; margin: 0 auto 20px; display: grid; place-items: center; border: 6px solid white; background: #fff4e9; color: #c95000; border-radius: 50%; font-size: 1.8rem; font-weight: 700; box-shadow: 0 4px 12px #202b400f; }
+.profile-summary h2 { font-size: 1.4rem; }
+.profile-summary p { color: #6e7a90; overflow-wrap: anywhere; font-size: .875rem; }
+.profile-summary nav { text-align: left; display: grid; gap: 8px; margin: 28px 0; }
+.profile-summary nav a { color: #4a5870; text-decoration: none; padding: 12px; border-radius: 10px; }
+.profile-summary nav a:hover { color: #c95000; background: #fff4e9; }
+.profile-note { background: #fff7ef; padding: 18px; border-radius: 12px; margin-bottom: 0; }
+#accountDetails, #identityVerification { scroll-margin-top: 85px; }
+#accountDetails form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 24px; margin-top: 24px; }
+#accountDetails form > button { grid-column: 1 / -1; justify-self: end; }
+.survey-workspace { display: grid; grid-template-columns: 250px minmax(0, 1fr); align-items: start; gap: 30px; max-width: 1300px; padding: 30px; margin: auto; }
+.survey-workspace > .tracer-wrapper { padding: 0; max-width: none; width: 100%; }
+.survey-guide { background: radial-gradient(ellipse at 0 110%, #ffd7ae, transparent 65%), #fff8f1; border-radius: 16px; padding: 28px 14px; position: sticky; top: 90px; }
+.survey-guide .auth-panel-logo { width: 90px; height: 90px; }
+.survey-guide h2 { text-align: center; font-size: 1.4rem; margin-bottom: 30px; }
+.survey-guide h2 small { display: block; font-size: .8rem; text-transform: uppercase; letter-spacing: .15em; color: #6e7a90; margin-top: 6px; }
+.survey-guide-step { display: flex; align-items: center; text-align: left; gap: 12px; background: transparent; border: 0; width: 100%; padding: 12px 6px; color: #4a5870; border-radius: 10px; font-size: .8rem; }
+.survey-guide-step span { display: grid; place-items: center; width: 36px; height: 36px; flex-shrink: 0; background: #edeae7; border-radius: 50%; }
+.survey-guide-step[aria-current="step"] { background: #fff0e0; color: #c95000; font-weight: 650; }
+.survey-guide-step[aria-current="step"] span { background: #ff913f; color: #101b32; }
+.survey-guide-step:disabled { cursor: default; opacity: .65; }
+.survey-guide-quote { font-style: italic; color: #c95000; padding: 40px 12px 10px; margin: 0; }
+@media (max-width: 991.98px) {
+    .survey-workspace { grid-template-columns: 1fr; padding: 24px 16px; max-width: 850px; }
+    .survey-guide { display: none; }
+    .profile-workspace { grid-template-columns: 1fr; }
+    .profile-summary { display: none; }
+}
+@media (max-width: 575.98px) {
+    #registerForm, #accountDetails form { grid-template-columns: 1fr; }
+}
+.analytics-workspace { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 22px; margin-bottom: 24px; align-items: start; }
+.analytics-summary { padding: 24px; border-radius: 18px; color: white; background: linear-gradient(130deg, #482607, #955016); box-shadow: 0 8px 20px #57331415; }
+.analytics-summary > span { text-transform: uppercase; font-size: .8rem; }
+.analytics-summary > strong { display: block; font-size: 2.4rem; line-height: 1.3; }
+.analytics-summary p { font-size: .875rem; margin-bottom: 0; }
+.analytics-summary-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: .8rem; margin-top: 14px; }
+.analytics-summary-row b { background: #ffffff20; border-radius: 99px; padding: 3px 8px; }
+.analytics-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+.analytics-tab { border: 1px solid transparent; border-radius: 99px; padding: 10px 16px; color: #4a5870; background: #f0eeec; font-size: .8rem; }
+.analytics-tab span { margin-left: 6px; background: #00000005; padding: 2px 6px; border-radius: 99px; }
+.analytics-tab[aria-pressed="true"] { color: #c95000; border-color: #ffb885; background: white; }
+.analytics-section { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.analytics-section[hidden] { display: none; }
+.analytics-chart { min-width: 0; }
+.analytics-chart-heading { display: flex; align-items: start; justify-content: space-between; gap: 14px; margin-bottom: 20px; }
+.analytics-chart-heading h3 { line-height: 1.45; font-weight: 650; }
+.analytics-count { border-radius: 99px; background: #fff3e9; color: #c95000; padding: 3px 10px; font-size: .8rem; }
+.analytics-chart .tracer-pie { position: relative; display: grid; place-items: center; }
+.tracer-pie-center { display: flex; flex-direction: column; justify-content: center; align-items: center; width: 68%; height: 68%; background: white; border-radius: 50%; }
+.tracer-pie-center strong { color: #101b32; font-size: 1.3rem; }
+.tracer-pie-center small { color: #6e7a90; font-size: .65rem; text-transform: uppercase; }
+.analytics-chart .text-truncate { width: 45% !important; }
+.analytics-chart .tracer-pie-legend { min-width: 150px; }
+.graduate-status-header { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.status-badge { display: inline-block; padding: 9px 16px; border-radius: 99px; font-size: .85rem; background: #edf0f5; color: #4a5870; }
+.status-badge.success { background: #e5faef; color: #087845; }
+.status-badge.pending { background: #fff5df; color: #966000; }
+.user-survey-progress { display: flex; justify-content: space-between; margin: 24px 0; gap: 20px; }
+.user-survey-progress > div { flex: 1; position: relative; text-align: center; }
+.user-survey-progress > div:not(:last-child)::after { content: ''; height: 3px; width: 70%; position: absolute; top: 22px; left: 70%; background: #ffd1ac; }
+.user-survey-progress span { display: grid; place-items: center; height: 46px; width: 46px; border-radius: 50%; background: #f0eeec; color: #6e7a90; margin: 0 auto 10px; }
+.user-survey-progress span.active { background: #ffead7; color: #c95000; }
+.user-survey-progress small { color: #4a5870; }
+@media (max-width: 1200px) {
+    .analytics-workspace { grid-template-columns: 1fr; }
+    .analytics-summary { max-width: none; }
+    .analytics-section { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 767.98px) {
+    .analytics-section { grid-template-columns: 1fr; }
+}
+@media (min-width: 992px) {
+    .tracer-sidebar + .tracer-page { margin-left: 244px; }
+    .sidebar-toggle-btn { display: none; }
+}
+@media (max-width: 1100px) {
+    .workspace-shortcuts, .faculty-tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .workspace-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 767.98px) {
+    .auth-panel { display: none; }
+    .auth-center { padding: 24px 14px; }
+    .auth-center > .tracer-wrapper { padding: 24px; }
+    .faculty-report-grid { grid-template-columns: 1fr; }
+    .faculty-kpi-grid { grid-template-columns: 1fr; gap: 12px; }
+    .table-swipe-hint { display: block; color: #6e7a90; font-size: .75rem; }
+    .tracer-card { padding: 18px; }
+    .tracer-header > .d-flex { flex-wrap: wrap; }
+}
+@media (max-width: 480px) {
+    .workspace-shortcuts, .faculty-tools-grid, .workspace-metrics { grid-template-columns: 1fr; }
+    .navbar-brand { font-size: 1rem; }
+    .graduate-nav .nav-pill-link { padding: 8px; }
+    .graduate-nav .nav-pill-link > span:last-child { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }

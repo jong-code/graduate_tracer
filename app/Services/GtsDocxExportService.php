@@ -25,7 +25,7 @@ class GtsDocxExportService
     public function export(GraduateTracerSurvey $survey): string
     {
         $survey->loadMissing([
-            'generalInformation', 'educationalBackgrounds', 'professionalExams',
+            'generalInformation.address', 'educationalBackgrounds', 'professionalExams',
             'courseReasons', 'trainings', 'employmentData.notEmployedReasons',
             'employmentData.jobReasons', 'employmentData.competencies',
             'otherGraduates',
@@ -75,5 +75,27 @@ class GtsDocxExportService
         }
 
         return $outputPath;
+    }
+
+    /**
+     * export() plus the boilerplate every caller needs around it - safe
+     * filename, force-download headers, and cleaning the temp file up
+     * once it's been streamed. Used by both SurveyOversightController
+     * (the audited, reason-gated "break glass" path) and
+     * SystemSettingsController (the routine Survey Templates page
+     * action) - the two controllers differ in who's allowed to call this
+     * and what they have to justify first, not in what actually happens
+     * once they do.
+     *
+     * @throws \RuntimeException see export() above.
+     */
+    public function downloadResponse(GraduateTracerSurvey $survey): \Symfony\Component\HttpFoundation\BinaryFileResponse
+    {
+        $path = $this->export($survey);
+
+        $survey->loadMissing('generalInformation');
+        $safeName = \Illuminate\Support\Str::slug($survey->generalInformation?->name ?? "survey-{$survey->id}");
+
+        return response()->download($path, "gts_{$safeName}.docx")->deleteFileAfterSend(true);
     }
 }

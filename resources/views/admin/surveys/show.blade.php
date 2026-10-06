@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="tracer-wrapper">
-    <div class="tracer-header"><h1>Survey Content — {{ $survey->name }}</h1></div>
+    <div class="tracer-header"><h1>Survey Content — {{ $survey->generalInformation?->name }}</h1></div>
 
     <div class="alert alert-secondary">This view was logged in the audit log with your stated reason.</div>
 
@@ -25,9 +25,10 @@
 
     <div class="tracer-card">
         <h2>Section A — General Information</h2>
-        <p><strong>Name:</strong> {{ $survey->name }}<br>
-        <strong>Address:</strong> {{ $survey->permanent_address }}<br>
-        <strong>Mobile:</strong> {{ $survey->mobile_number }}<br>
+        <p><strong>Name:</strong> {{ $survey->generalInformation?->name }}<br>
+        <strong>Permanent Address:</strong> {{ $survey->generalInformation?->address?->formattedPermanentAddress() ?: '—' }}<br>
+        <strong>Current Address:</strong> {{ $survey->generalInformation?->address?->formattedCurrentAddress() ?: '—' }}<br>
+        <strong>Mobile:</strong> {{ $survey->generalInformation?->mobile_number }}<br>
         <strong>Program:</strong> {{ $survey->academicProgram->name ?? '—' }}<br>
         <strong>School Year:</strong> {{ $survey->schoolYear->label ?? '—' }}</p>
     </div>

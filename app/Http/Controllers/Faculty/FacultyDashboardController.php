@@ -15,21 +15,26 @@ class FacultyDashboardController extends Controller
      */
     public function index()
     {
-        $totalSubmitted = GraduateTracerSurvey::whereNotNull('submitted_at')->count();
+        $submittedIds = GraduateTracerSurvey::forGraduateUsers()->whereNotNull('submitted_at')->pluck('id');
+        $totalSubmitted = $submittedIds->count();
 
         $employmentBreakdown = DB::table('employment_data')
+            ->whereIn('survey_id', $submittedIds)
             ->select('employment_status', DB::raw('count(*) as total'))
             ->groupBy('employment_status')
             ->get();
 
         $byProgram = DB::table('graduate_tracer_survey')
             ->join('academic_programs', 'academic_programs.id', '=', 'graduate_tracer_survey.academic_program_id')
-            ->whereNotNull('graduate_tracer_survey.submitted_at')
+            ->whereIn('graduate_tracer_survey.id', $submittedIds)
             ->select('academic_programs.name', DB::raw('count(*) as total'))
             ->groupBy('academic_programs.name')
+            ->orderByDesc('total')
             ->get();
 
         $curriculumRelevance = DB::table('employment_data')
+            ->whereIn('survey_id', $submittedIds)
+            ->whereNotNull('curriculum_relevant')
             ->select('curriculum_relevant', DB::raw('count(*) as total'))
             ->groupBy('curriculum_relevant')
             ->get();

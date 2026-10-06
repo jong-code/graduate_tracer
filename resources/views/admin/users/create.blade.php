@@ -15,8 +15,16 @@
         <form method="POST" action="{{ route('admin.users.store') }}">
             @csrf
             <div class="mb-3">
-                <label class="form-label">Name</label>
+                <label class="form-label">Last Name</label>
+                <input type="text" name="last_name" class="form-control" value="{{ old('last_name') }}" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">First Name</label>
                 <input type="text" name="name" class="form-control" value="{{ old('name') }}" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Middle Name (leave as blank if None)</label>
+                <input type="text" name="middle_name" class="form-control" value="{{ old('middle_name') }}">
             </div>
             <div class="mb-3">
                 <label class="form-label">Email</label>

@@ -1,10 +1,11 @@
-@php $gi = $survey->generalInformation; $ed = $survey->employmentData; @endphp
+@php $gi = $survey->generalInformation; $ed = $survey->employmentData; $address = $gi?->address; @endphp
 
 <div class="tracer-card mb-3">
     <h2>A. General Information</h2>
     <dl class="row mb-0">
         <dt class="col-sm-4">Name</dt><dd class="col-sm-8">{{ $gi?->name }}</dd>
-        <dt class="col-sm-4">Permanent Address</dt><dd class="col-sm-8">{{ $gi?->permanent_address }}</dd>
+        <dt class="col-sm-4">Permanent Address</dt><dd class="col-sm-8">{{ $address?->formattedPermanentAddress() ?: '—' }}</dd>
+        <dt class="col-sm-4">Current Address</dt><dd class="col-sm-8">{{ $address?->formattedCurrentAddress() ?: '—' }}</dd>
         <dt class="col-sm-4">Email</dt><dd class="col-sm-8">{{ $gi?->email ?: '—' }}</dd>
         <dt class="col-sm-4">Telephone</dt><dd class="col-sm-8">{{ $gi?->telephone ?: '—' }}</dd>
         <dt class="col-sm-4">Mobile Number</dt><dd class="col-sm-8">{{ $gi?->mobile_number }}</dd>
@@ -12,8 +13,7 @@
         <dt class="col-sm-4">Sex</dt><dd class="col-sm-8">{{ ucfirst($gi?->sex ?? '') }}</dd>
         <dt class="col-sm-4">Birthday</dt><dd class="col-sm-8">{{ $gi?->birthday?->format('F j, Y') }}</dd>
         <dt class="col-sm-4">Region of Origin</dt><dd class="col-sm-8">{{ $gi?->region_of_origin }}</dd>
-        <dt class="col-sm-4">Province</dt><dd class="col-sm-8">{{ $gi?->province ?: '—' }}</dd>
-        <dt class="col-sm-4">Residence</dt><dd class="col-sm-8">{{ $gi?->residence_city_municipality }}</dd>
+        <dt class="col-sm-4">Location of Residence</dt><dd class="col-sm-8">{{ ucfirst($gi?->residence_location ?? '') ?: '—' }}</dd>
         <dt class="col-sm-4">Academic Program</dt><dd class="col-sm-8">{{ $survey->academicProgram->name ?? '—' }}</dd>
         <dt class="col-sm-4">School Year</dt><dd class="col-sm-8">{{ $survey->schoolYear->label ?? '—' }}</dd>
     </dl>
